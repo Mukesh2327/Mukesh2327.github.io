@@ -3,47 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Interactive HTML website showcasing advanced web technologies including calculator, quiz, media gallery, and modern UI components. Built with HTML5, CSS3, and JavaScript.">
-    <meta name="keywords" content="HTML, CSS, JavaScript, interactive website, calculator, quiz, web development, responsive design">
+    <meta name="description" content="Ultimate interactive HTML website with games, music, animations, and avatars. Features Snake game, Memory game, Piano, virtual pet, and stunning visual effects.">
+    <meta name="keywords" content="HTML games, interactive website, Snake game, Piano, virtual pet, web animations, HTML5 canvas">
     <meta name="author" content="TechHub Interactive">
-    <meta property="og:title" content="TechHub Interactive - Advanced HTML Showcase">
-    <meta property="og:description" content="Experience cutting-edge web technologies with our interactive website featuring calculator, quiz, media gallery, and more.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="robots" content="index, follow">
+    <title>🎮 TechHub Interactive - Ultimate Gaming & Entertainment Hub</title>
     
-    <title>TechHub Interactive - Advanced HTML Showcase | Live Demo</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🚀%3C/text%3E%3C/svg%3E">
-    
-    <!-- Preload critical resources -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎮%3C/text%3E%3C/svg%3E">
     
     <style>
-        /* Advanced CSS for interactive elements - Optimized for production */
         :root {
-            --primary-color: #667eea;
-            --secondary-color: #764ba2;
-            --accent-color: #ff6b6b;
-            --success-color: #4CAF50;
-            --warning-color: #ffa500;
-            --error-color: #f44336;
-            --text-dark: #333;
-            --text-light: #666;
-            --bg-light: #f8f9fa;
-            --bg-white: #ffffff;
-            --border-color: #ddd;
-            --shadow-light: 0 2px 20px rgba(0,0,0,0.1);
-            --shadow-medium: 0 5px 15px rgba(0,0,0,0.1);
-            --shadow-heavy: 0 10px 30px rgba(0,0,0,0.1);
-            --border-radius-sm: 8px;
-            --border-radius-md: 15px;
-            --border-radius-lg: 20px;
-            --border-radius-xl: 25px;
-            --transition: all 0.3s ease;
+            --primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --neon-blue: #00d4ff;
+            --neon-pink: #ff006e;
+            --neon-green: #39ff14;
+            --dark: #0f172a;
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
         }
 
         * {
@@ -53,48 +33,92 @@
         }
 
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--primary);
+            color: white;
+            overflow-x: hidden;
             min-height: 100vh;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
 
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--primary);
+            overflow: hidden;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .shape {
+            position: absolute;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            left: 80%;
+            border-radius: 20px;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 80%;
+            left: 20%;
+            border-radius: 50%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Container */
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
-        }
-
-        /* Skip navigation for accessibility */
-        .skip-nav {
-            position: absolute;
-            top: -40px;
-            left: 6px;
-            background: var(--primary-color);
-            color: white;
-            padding: 8px;
-            text-decoration: none;
-            border-radius: var(--border-radius-sm);
-            z-index: 10000;
-        }
-
-        .skip-nav:focus {
-            top: 6px;
+            position: relative;
+            z-index: 1;
         }
 
         /* Navigation */
         nav {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 1rem 0;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 1rem;
+            margin-bottom: 2rem;
             position: sticky;
-            top: 0;
+            top: 20px;
             z-index: 1000;
-            box-shadow: var(--shadow-light);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
         nav ul {
@@ -105,1519 +129,1736 @@
             gap: 1rem;
         }
 
-        nav li {
-            margin: 0;
-        }
-
         nav a {
+            color: white;
             text-decoration: none;
-            color: var(--text-dark);
+            padding: 12px 24px;
+            border-radius: 20px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
             font-weight: 600;
-            padding: 0.5rem 1rem;
-            border-radius: var(--border-radius-xl);
-            transition: var(--transition);
-            display: block;
+            position: relative;
+            overflow: hidden;
         }
 
-        nav a:hover, nav a:focus {
-            background: var(--primary-color);
-            color: white;
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        nav a:hover::before {
+            left: 100%;
+        }
+
+        nav a:hover {
             transform: translateY(-2px);
-            outline: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-color: var(--neon-blue);
+            background: rgba(255,255,255,0.2);
         }
 
         /* Header */
         header {
             text-align: center;
             padding: 4rem 0;
-            color: white;
+            position: relative;
         }
 
         header h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-size: clamp(2.5rem, 6vw, 4rem);
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            animation: fadeInUp 1s ease-out;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink), var(--neon-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px var(--neon-blue)); }
+            to { filter: drop-shadow(0 0 30px var(--neon-pink)); }
         }
 
         header p {
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            font-size: 1.3rem;
             opacity: 0.9;
-            animation: fadeInUp 1s ease-out 0.3s both;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Sections */
-        section {
-            background: var(--bg-white);
-            margin: 2rem 0;
-            padding: 3rem;
-            border-radius: var(--border-radius-lg);
-            box-shadow: var(--shadow-heavy);
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        h2 {
-            color: var(--primary-color);
             margin-bottom: 2rem;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            text-align: center;
         }
 
-        /* Interactive Calculator */
-        .calculator {
-            max-width: 400px;
-            margin: 0 auto;
-            background: var(--bg-light);
-            padding: 2rem;
-            border-radius: var(--border-radius-md);
-            box-shadow: inset 0 2px 10px rgba(0,0,0,0.1);
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
-        .calc-display {
-            width: 100%;
-            height: 60px;
-            font-size: 1.5rem;
-            text-align: right;
-            padding: 0 1rem;
-            border: 2px solid var(--border-color);
-            border-radius: var(--border-radius-sm);
-            margin-bottom: 1rem;
-            background: var(--bg-white);
-            font-family: monospace;
-        }
-
-        .calc-display:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-
-        .calc-buttons {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
-
-        .calc-btn {
-            height: 50px;
-            border: none;
-            border-radius: var(--border-radius-sm);
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: var(--transition);
-            background: var(--primary-color);
-            color: white;
-            font-weight: 600;
-        }
-
-        .calc-btn:hover, .calc-btn:focus {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-            outline: none;
-        }
-
-        .calc-btn:active {
-            transform: translateY(0);
-        }
-
-        .calc-btn.operator {
-            background: var(--accent-color);
-        }
-
-        .calc-btn.operator:hover {
-            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
-        }
-
-        .calc-btn.clear {
-            background: var(--warning-color);
-        }
-
-        .calc-btn.clear:hover {
-            box-shadow: 0 4px 12px rgba(255, 165, 0, 0.4);
-        }
-
-        /* Contact Form */
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--text-light);
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid var(--border-color);
-            border-radius: var(--border-radius-sm);
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-            font-family: inherit;
-        }
-
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-
-        input:invalid {
-            border-color: var(--error-color);
-        }
-
-        .submit-btn {
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        .cta-btn {
+            background: var(--secondary);
             color: white;
             padding: 15px 30px;
             border: none;
-            border-radius: var(--border-radius-xl);
+            border-radius: 25px;
             font-size: 1.1rem;
-            cursor: pointer;
-            transition: var(--transition);
-            width: 100%;
             font-weight: 600;
-        }
-
-        .submit-btn:hover, .submit-btn:focus {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
-            outline: none;
-        }
-
-        .submit-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        /* Progress Bar */
-        .progress-container {
-            background: var(--bg-light);
-            border-radius: var(--border-radius-xl);
-            padding: 3px;
-            margin: 1rem 0;
-            overflow: hidden;
-        }
-
-        .progress-bar {
-            height: 25px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            border-radius: var(--border-radius-xl);
-            transition: width 0.5s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-
-        /* Media Gallery */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .media-item {
-            border-radius: var(--border-radius-md);
-            overflow: hidden;
-            box-shadow: var(--shadow-medium);
-            transition: transform 0.3s ease;
-            background: var(--bg-white);
-        }
-
-        .media-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .media-item p {
-            padding: 1rem;
-            margin: 0;
-            text-align: center;
-            font-weight: 600;
-        }
-
-        video, audio {
-            width: 100%;
-            border-radius: var(--border-radius-md);
-        }
-
-        /* Quiz Section */
-        .quiz-container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .question {
-            background: var(--bg-light);
-            padding: 2rem;
-            border-radius: var(--border-radius-md);
-            margin-bottom: 1rem;
-        }
-
-        .question h3 {
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-
-        .options {
-            display: grid;
-            gap: 10px;
-            margin-top: 1rem;
-        }
-
-        .option {
-            padding: 1rem;
-            background: var(--bg-white);
-            border: 2px solid var(--border-color);
-            border-radius: var(--border-radius-sm);
             cursor: pointer;
-            transition: var(--transition);
-            text-align: left;
-        }
-
-        .option:hover, .option:focus {
-            border-color: var(--primary-color);
-            background: #f0f4ff;
-            outline: none;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
-        }
-
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Theme Toggle */
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            cursor: pointer;
-            font-size: 1.5rem;
-            transition: var(--transition);
-            z-index: 1001;
-            box-shadow: var(--shadow-medium);
-        }
-
-        .theme-toggle:hover, .theme-toggle:focus {
-            transform: scale(1.1);
-            background: var(--bg-white);
-            outline: none;
-        }
-
-        /* Data Visualization */
-        .chart-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .chart-item {
-            text-align: center;
-            padding: 2rem;
-            background: var(--bg-light);
-            border-radius: var(--border-radius-md);
-            transition: transform 0.3s ease;
-        }
-
-        .chart-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .chart-item h4 {
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-
-        .chart-bar {
-            width: 100%;
-            height: 20px;
-            background: #e0e0e0;
-            border-radius: var(--border-radius-sm);
+            transition: all 0.3s ease;
+            position: relative;
             overflow: hidden;
-            margin: 1rem 0;
         }
 
-        .chart-fill {
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        /* Game Cards */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .game-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            border-radius: var(--border-radius-sm);
-            transition: width 2s ease;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-pink));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
         }
 
-        /* Accordion */
-        .accordion {
-            margin-top: 2rem;
+        .game-card:hover::before {
+            opacity: 0.1;
         }
 
-        .accordion-item {
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius-sm);
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            border-color: var(--neon-blue);
+        }
+
+        .game-icon {
+            font-size: 3rem;
             margin-bottom: 1rem;
-            overflow: hidden;
-        }
-
-        .accordion-header {
-            background: var(--bg-light);
-            padding: 1rem 2rem;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background 0.3s ease;
-            border: none;
-            width: 100%;
-            text-align: left;
-            font-size: 1rem;
-        }
-
-        .accordion-header:hover, .accordion-header:focus {
-            background: #e9ecef;
-            outline: none;
-        }
-
-        .accordion-content {
-            padding: 0 2rem;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-        }
-
-        .accordion-item.active .accordion-content {
-            max-height: 200px;
-            padding: 2rem;
-        }
-
-        /* Tab System */
-        .tabs {
-            display: flex;
-            background: var(--bg-light);
-            border-radius: var(--border-radius-sm);
-            padding: 5px;
-            margin-bottom: 2rem;
-            overflow-x: auto;
-        }
-
-        .tab {
-            flex: 1;
-            padding: 1rem;
-            text-align: center;
-            cursor: pointer;
-            border-radius: var(--border-radius-sm);
-            transition: var(--transition);
-            white-space: nowrap;
-            border: none;
-            background: none;
-            font-size: 1rem;
-            min-width: 120px;
-        }
-
-        .tab.active {
-            background: var(--bg-white);
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-
-        .tab:hover, .tab:focus {
-            background: rgba(102, 126, 234, 0.1);
-            outline: none;
-        }
-
-        .tab-content {
-            display: none;
-            padding: 2rem;
-            background: var(--bg-light);
-            border-radius: var(--border-radius-sm);
-        }
-
-        .tab-content.active {
             display: block;
         }
 
-        .tab-content ul {
-            list-style-position: inside;
-            margin-left: 0;
-        }
-
-        .tab-content li {
-            margin-bottom: 0.5rem;
-            padding-left: 0.5rem;
-        }
-
-        /* Live Clock */
-        .clock-container {
-            text-align: center;
-            margin-top: 3rem;
-            padding: 2rem;
-            background: var(--bg-light);
-            border-radius: var(--border-radius-md);
-        }
-
-        .clock-container h3 {
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-
-        #liveClock {
-            font-size: clamp(1.5rem, 4vw, 2rem);
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-top: 1rem;
-            font-family: monospace;
-        }
-
-        #liveDate {
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            color: var(--text-light);
-            margin-top: 0.5rem;
-        }
-
-        /* Footer */
-        footer {
-            background: rgba(255, 255, 255, 0.1);
+        .play-btn {
+            background: var(--accent);
             color: white;
-            text-align: center;
-            padding: 3rem;
-            border-radius: var(--border-radius-lg);
-            margin-top: 2rem;
-        }
-
-        footer h3 {
-            margin-bottom: 1rem;
-        }
-
-        footer p {
-            margin-bottom: 1rem;
-        }
-
-        .back-to-top {
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid white;
-            color: white;
-            padding: 10px 20px;
-            border-radius: var(--border-radius-xl);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 15px;
+            font-weight: 600;
             cursor: pointer;
-            transition: var(--transition);
-            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
         }
 
-        .back-to-top:hover, .back-to-top:focus {
-            background: rgba(255, 255, 255, 0.3);
+        .play-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Game Containers */
+        .game-container {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            display: none;
+            animation: slideIn 0.5s ease;
+        }
+
+        .game-container.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Snake Game */
+        #snakeCanvas {
+            border: 3px solid var(--neon-green);
+            border-radius: 15px;
+            background: var(--dark);
+            box-shadow: 0 0 30px var(--neon-green);
+            display: block;
+            margin: 1rem auto;
+        }
+
+        /* Memory Game */
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .memory-card {
+            aspect-ratio: 1;
+            background: var(--glass);
+            border: 2px solid var(--glass-border);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .memory-card:hover {
+            transform: scale(1.05);
+            border-color: var(--neon-blue);
+        }
+
+        .memory-card.flipped {
+            background: var(--accent);
+            border-color: var(--neon-blue);
+        }
+
+        .memory-card.matched {
+            background: var(--success);
+            border-color: var(--neon-green);
+            animation: pulse 0.5s ease;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Virtual Piano */
+        .piano-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            perspective: 1000px;
+        }
+
+        .piano {
+            display: flex;
+            justify-content: center;
+            background: #333;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            transform: rotateX(10deg);
+        }
+
+        .piano-key {
+            width: 50px;
+            height: 200px;
+            background: white;
+            border: 2px solid #ccc;
+            border-radius: 0 0 10px 10px;
+            margin: 0 1px;
+            cursor: pointer;
+            transition: all 0.1s ease;
+            position: relative;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+
+        .piano-key:hover {
+            background: #f0f0f0;
+            transform: translateY(2px);
+        }
+
+        .piano-key:active, .piano-key.pressed {
+            background: var(--neon-blue);
+            transform: translateY(4px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .piano-key.black {
+            width: 30px;
+            height: 130px;
+            background: #222;
+            position: absolute;
+            z-index: 2;
+            margin-left: -15px;
+        }
+
+        .piano-key.black:hover {
+            background: #444;
+        }
+
+        .piano-key.black:active, .piano-key.black.pressed {
+            background: var(--neon-pink);
+        }
+
+        /* Virtual Pet */
+        .pet-container {
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--glass);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+        }
+
+        .pet-avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: var(--accent);
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pet-avatar:hover {
+            transform: scale(1.05);
+            animation: bounce 0.5s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: scale(1.05) translateY(0); }
+            50% { transform: scale(1.05) translateY(-10px); }
+        }
+
+        .pet-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-bar {
+            background: var(--dark);
+            border-radius: 20px;
+            padding: 10px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .stat-fill {
+            height: 20px;
+            border-radius: 10px;
+            transition: width 1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .stat-fill.happiness {
+            background: var(--neon-pink);
+        }
+
+        .stat-fill.hunger {
+            background: var(--neon-green);
+        }
+
+        .stat-fill.energy {
+            background: var(--neon-blue);
+        }
+
+        .pet-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .pet-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .pet-btn.feed {
+            background: var(--success);
+        }
+
+        .pet-btn.play {
+            background: var(--secondary);
+        }
+
+        .pet-btn.sleep {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .pet-btn:hover {
             transform: translateY(-2px);
-            outline: none;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
+        /* Avatar Creator */
+        .avatar-creator {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .avatar-preview {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            border: 3px solid var(--neon-blue);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .avatar-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .control-group {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .control-group h4 {
+            margin-bottom: 1rem;
+            color: var(--neon-blue);
+        }
+
+        .avatar-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .avatar-option {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--glass-border);
+            background: var(--glass);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+        }
+
+        .avatar-option:hover, .avatar-option.selected {
+            border-color: var(--neon-blue);
+            background: var(--accent);
+            transform: scale(1.1);
+        }
+
+        /* Particle Effects */
+        .particle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--neon-blue);
+            border-radius: 50%;
+            animation: particle-float 3s linear infinite;
+        }
+
+        @keyframes particle-float {
+            0% {
+                opacity: 1;
+                transform: translateY(100vh) scale(0);
             }
-            
-            section {
-                padding: 2rem 1rem;
-                margin: 1rem 0;
+            10% {
+                transform: translateY(90vh) scale(1);
             }
-            
-            .form-grid {
-                grid-template-columns: 1fr;
+            90% {
+                transform: translateY(-10vh) scale(1);
             }
-            
-            .gallery {
-                grid-template-columns: 1fr;
-            }
-            
-            .chart-container {
-                grid-template-columns: 1fr;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .tabs {
-                flex-direction: column;
-            }
-            
-            .tab {
-                flex: none;
+            100% {
+                opacity: 0;
+                transform: translateY(-20vh) scale(0);
             }
         }
 
-        @media (max-width: 480px) {
-            .calc-buttons {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 5px;
-            }
-            
-            .calc-btn {
-                height: 45px;
-                font-size: 1rem;
-            }
-            
-            .theme-toggle {
-                width: 45px;
-                height: 45px;
-                font-size: 1.3rem;
-            }
+        /* Music Visualizer */
+        .music-visualizer {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            height: 100px;
+            gap: 4px;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: var(--dark);
+            border-radius: 15px;
+            border: 2px solid var(--neon-blue);
         }
 
-        /* Dark mode styles */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --text-dark: #e0e0e0;
-                --text-light: #b0b0b0;
-                --bg-light: #2a2a2a;
-                --bg-white: #1e1e1e;
-                --border-color: #404040;
-            }
+        .music-bar {
+            width: 20px;
+            background: linear-gradient(to top, var(--neon-blue), var(--neon-pink));
+            border-radius: 10px 10px 0 0;
+            animation: music-bounce 0.5s ease-in-out infinite alternate;
         }
 
-        /* Reduced motion for accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
+        .music-bar:nth-child(even) {
+            animation-delay: 0.1s;
         }
 
-        /* High contrast mode */
-        @media (prefers-contrast: high) {
-            :root {
-                --primary-color: #0056b3;
-                --secondary-color: #495057;
-                --border-color: #000;
-            }
+        .music-bar:nth-child(3n) {
+            animation-delay: 0.2s;
         }
 
-        /* Print styles */
-        @media print {
-            .theme-toggle,
-            .back-to-top,
-            nav,
-            .calculator,
-            .quiz-container {
-                display: none;
-            }
-            
-            body {
-                background: white;
-                color: black;
-            }
-            
-            section {
-                box-shadow: none;
-                border: 1px solid #000;
-            }
+        @keyframes music-bounce {
+            0% { height: 10px; }
+            100% { height: 60px; }
         }
 
-        /* Loading animation */
+        /* Game Stats */
+        .game-stats {
+            display: flex;
+            justify-content: space-around;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1rem;
+            margin: 1rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--neon-green);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Loading Animations */
         .loading {
-            opacity: 0;
-            transition: opacity 0.5s ease;
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--glass-border);
+            border-top: 4px solid var(--neon-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
         }
 
-        .loaded {
-            opacity: 1;
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
-        /* Error styles */
-        .error {
-            color: var(--error-color);
-            border-color: var(--error-color) !important;
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container { padding: 10px; }
+            .games-grid { grid-template-columns: 1fr; }
+            .piano-key { width: 40px; height: 160px; }
+            .piano-key.black { width: 25px; height: 100px; }
+            header h1 { font-size: 2rem; }
+            .cta-buttons { flex-direction: column; align-items: center; }
         }
 
-        .success {
-            color: var(--success-color);
-            border-color: var(--success-color) !important;
+        /* Special Effects */
+        .glow-effect {
+            animation: glow-pulse 2s ease-in-out infinite alternate;
         }
 
-        /* Focus styles for better accessibility */
-        *:focus {
-            outline: 2px solid var(--primary-color);
-            outline-offset: 2px;
+        @keyframes glow-pulse {
+            from {
+                box-shadow: 0 0 20px var(--neon-blue);
+            }
+            to {
+                box-shadow: 0 0 40px var(--neon-pink), 0 0 60px var(--neon-blue);
+            }
         }
 
-        button:focus, input:focus, select:focus, textarea:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+        .rainbow-text {
+            background: linear-gradient(45deg, #ff0000, #ff8000, #ffff00, #80ff00, #00ff80, #0080ff, #8000ff, #ff0080);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: rainbow 3s ease-in-out infinite;
+        }
+
+        @keyframes rainbow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Toast Notifications */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 10000;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast.success {
+            border-color: var(--success);
+        }
+
+        .toast.error {
+            border-color: var(--error);
         }
     </style>
 </head>
-<body class="loading">
-    <!-- Skip navigation for accessibility -->
-    <a href="#main-content" class="skip-nav">Skip to main content</a>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+    </div>
 
-    <!-- Theme Toggle -->
-    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark Mode" aria-label="Toggle dark mode">🌙</button>
+    <!-- Particle Container -->
+    <div class="particle-container" id="particles"></div>
 
     <!-- Navigation -->
-    <nav role="navigation" aria-label="Main navigation">
+    <nav>
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#calculator">Calculator</a></li>
-            <li><a href="#quiz">Quiz</a></li>
-            <li><a href="#gallery">Media</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#data">Analytics</a></li>
+            <li><a href="#home" onclick="showSection('home')">🏠 Home</a></li>
+            <li><a href="#games" onclick="showSection('games')">🎮 Games</a></li>
+            <li><a href="#music" onclick="showSection('music')">🎵 Music</a></li>
+            <li><a href="#avatars" onclick="showSection('avatars')">👤 Avatars</a></li>
+            <li><a href="#pet" onclick="showSection('pet')">🐾 Virtual Pet</a></li>
         </ul>
     </nav>
 
     <div class="container">
         <!-- Header -->
         <header id="home">
-            <h1>TechHub Interactive</h1>
-            <p>Advanced HTML5 Showcase with Multiple Interactive Features - Deployed Live for Global Access</p>
-            <div class="progress-container" role="progressbar" aria-label="Page scroll progress">
-                <div class="progress-bar" id="pageProgress" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+            <h1 class="rainbow-text">🎮 TechHub Interactive Gaming Hub</h1>
+            <p>Experience the ultimate collection of HTML5 games, music, and interactive entertainment!</p>
+            <div class="cta-buttons">
+                <button class="cta-btn glow-effect" onclick="showSection('games')">🚀 Play Games</button>
+                <button class="cta-btn glow-effect" onclick="showSection('music')">🎵 Make Music</button>
+                <button class="cta-btn glow-effect" onclick="createParticles()">✨ Create Magic</button>
+            </div>
+
+            <!-- Music Visualizer -->
+            <div class="music-visualizer" id="visualizer">
+                <div class="music-bar"></div>
+                <div class="music-bar"></div>
+                <div class="music-bar"></div>
+                <div class="music-bar"></div>
+                <div class="music-bar"></div>
+                <div class="music-bar"></div>
+                <div class="music-bar"></div>
+                <div class="music-bar"></div>
             </div>
         </header>
 
-        <main id="main-content">
-            <!-- Interactive Calculator Section -->
-            <section id="calculator" class="animate-on-scroll">
-                <h2>🧮 Interactive Calculator</h2>
-                <div class="calculator">
-                    <input type="text" class="calc-display" id="display" readonly aria-label="Calculator display" role="textbox">
-                    <div class="calc-buttons" role="grid" aria-label="Calculator buttons">
-                        <button class="calc-btn clear" onclick="clearDisplay()" aria-label="Clear">C</button>
-                        <button class="calc-btn operator" onclick="deleteLast()" aria-label="Delete last">⌫</button>
-                        <button class="calc-btn operator" onclick="appendToDisplay('/')" aria-label="Divide">/</button>
-                        <button class="calc-btn operator" onclick="appendToDisplay('*')" aria-label="Multiply">×</button>
-                        
-                        <button class="calc-btn" onclick="appendToDisplay('7')" aria-label="Seven">7</button>
-                        <button class="calc-btn" onclick="appendToDisplay('8')" aria-label="Eight">8</button>
-                        <button class="calc-btn" onclick="appendToDisplay('9')" aria-label="Nine">9</button>
-                        <button class="calc-btn operator" onclick="appendToDisplay('-')" aria-label="Subtract">-</button>
-                        
-                        <button class="calc-btn" onclick="appendToDisplay('4')" aria-label="Four">4</button>
-                        <button class="calc-btn" onclick="appendToDisplay('5')" aria-label="Five">5</button>
-                        <button class="calc-btn" onclick="appendToDisplay('6')" aria-label="Six">6</button>
-                        <button class="calc-btn operator" onclick="appendToDisplay('+')" aria-label="Add">+</button>
-                        
-                        <button class="calc-btn" onclick="appendToDisplay('1')" aria-label="One">1</button>
-                        <button class="calc-btn" onclick="appendToDisplay('2')" aria-label="Two">2</button>
-                        <button class="calc-btn" onclick="appendToDisplay('3')" aria-label="Three">3</button>
-                        <button class="calc-btn operator" onclick="calculate()" aria-label="Equals" style="grid-row: span 2;">=</button>
-                        
-                        <button class="calc-btn" onclick="appendToDisplay('0')" aria-label="Zero" style="grid-column: span 2;">0</button>
-                        <button class="calc-btn" onclick="appendToDisplay('.')" aria-label="Decimal point">.</button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Interactive Quiz Section -->
-            <section id="quiz" class="animate-on-scroll">
-                <h2>🧠 Knowledge Quiz</h2>
-                <div class="quiz-container">
-                    <div class="question">
-                        <h3>What does HTML stand for?</h3>
-                        <div class="options" role="radiogroup" aria-labelledby="question1">
-                            <button class="option" onclick="selectAnswer(this, false)" role="radio" aria-checked="false">Hypertext Markup Language</button>
-                            <button class="option" onclick="selectAnswer(this, true)" role="radio" aria-checked="false">HyperText Markup Language</button>
-                            <button class="option" onclick="selectAnswer(this, false)" role="radio" aria-checked="false">High Tech Modern Language</button>
-                            <button class="option" onclick="selectAnswer(this, false)" role="radio" aria-checked="false">Home Tool Markup Language</button>
-                        </div>
-                    </div>
-                    
-                    <div class="question">
-                        <h3>Which HTML5 element is used for navigation?</h3>
-                        <div class="options" role="radiogroup" aria-labelledby="question2">
-                            <button class="option" onclick="selectAnswer(this, false)" role="radio" aria-checked="false">&lt;menu&gt;</button>
-                            <button class="option" onclick="selectAnswer(this, true)" role="radio" aria-checked="false">&lt;nav&gt;</button>
-                            <button class="option" onclick="selectAnswer(this, false)" role="radio" aria-checked="false">&lt;navigation&gt;</button>
-                            <button class="option" onclick="selectAnswer(this, false)" role="radio" aria-checked="false">&lt;navbar&gt;</button>
-                        </div>
-                    </div>
-
-                    <div id="quizResult" role="alert" aria-live="polite" style="text-align: center; margin-top: 2rem; font-size: 1.2rem; font-weight: bold;"></div>
-                </div>
-            </section>
-
-            <!-- Tab System -->
-            <section class="animate-on-scroll">
-                <h2>📊 Interactive Tabs</h2>
-                <div class="tabs" role="tablist">
-                    <button class="tab active" onclick="openTab(event, 'tab1')" role="tab" aria-selected="true" aria-controls="tab1">Features</button>
-                    <button class="tab" onclick="openTab(event, 'tab2')" role="tab" aria-selected="false" aria-controls="tab2">Technologies</button>
-                    <button class="tab" onclick="openTab(event, 'tab3')" role="tab" aria-selected="false" aria-controls="tab3">Benefits</button>
+        <!-- Games Section -->
+        <section id="games-section" class="game-container">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: var(--neon-blue);">🎮 Epic Games Collection</h2>
+            
+            <div class="games-grid">
+                <!-- Snake Game Card -->
+                <div class="game-card">
+                    <span class="game-icon">🐍</span>
+                    <h3>Snake Game</h3>
+                    <p>Classic snake game with neon effects and power-ups!</p>
+                    <button class="play-btn" onclick="startSnakeGame()">Play Snake</button>
                 </div>
 
-                <div id="tab1" class="tab-content active" role="tabpanel" aria-labelledby="tab1-btn">
-                    <h3>🚀 Advanced Features</h3>
-                    <ul>
-                        <li>Responsive Design with CSS Grid and Flexbox</li>
-                        <li>Interactive Calculator with Full Functionality</li>
-                        <li>Multimedia Gallery with Video and Audio</li>
-                        <li>Progressive Enhancement Techniques</li>
-                        <li>Accessibility Features (ARIA, Semantic HTML)</li>
-                        <li>Modern CSS Animations and Transitions</li>
-                        <li>SEO Optimized for Search Engines</li>
-                        <li>Cross-browser Compatibility</li>
-                    </ul>
+                <!-- Memory Game Card -->
+                <div class="game-card">
+                    <span class="game-icon">🧠</span>
+                    <h3>Memory Master</h3>
+                    <p>Test your memory with this colorful card matching game!</p>
+                    <button class="play-btn" onclick="startMemoryGame()">Play Memory</button>
                 </div>
 
-                <div id="tab2" class="tab-content" role="tabpanel" aria-labelledby="tab2-btn">
-                    <h3>⚡ Technologies Used</h3>
-                    <ul>
-                        <li>HTML5 Semantic Elements</li>
-                        <li>CSS3 Grid and Flexbox</li>
-                        <li>CSS Custom Properties (Variables)</li>
-                        <li>Modern JavaScript ES6+</li>
-                        <li>Web APIs (Intersection Observer, Local Storage)</li>
-                        <li>Progressive Web App Concepts</li>
-                        <li>ARIA Accessibility Standards</li>
-                        <li>Responsive Design Principles</li>
-                    </ul>
+                <!-- Reaction Time Card -->
+                <div class="game-card">
+                    <span class="game-icon">⚡</span>
+                    <h3>Reaction Time</h3>
+                    <p>How fast are your reflexes? Click when you see green!</p>
+                    <button class="play-btn" onclick="startReactionGame()">Test Reflexes</button>
                 </div>
-
-                <div id="tab3" class="tab-content" role="tabpanel" aria-labelledby="tab3-btn">
-                    <h3>✨ Key Benefits</h3>
-                    <ul>
-                        <li>Cross-browser Compatibility</li>
-                        <li>Mobile-first Responsive Design</li>
-                        <li>Fast Loading and Performance Optimized</li>
-                        <li>SEO Friendly Structure</li>
-                        <li>Accessibility Compliant (WCAG 2.1)</li>
-                        <li>Maintainable and Scalable Code</li>
-                        <li>Free Hosting Ready</li>
-                        <li>Global CDN Distribution</li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Accordion Section -->
-            <section class="animate-on-scroll">
-                <h2>📋 FAQ Accordion</h2>
-                <div class="accordion">
-                    <div class="accordion-item">
-                        <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
-                            What browsers support HTML5?
-                        </button>
-                        <div class="accordion-content" role="region">
-                            <p>All modern browsers including Chrome, Firefox, Safari, Edge, and Opera fully support HTML5 features. Even Internet Explorer 9+ has substantial HTML5 support. This website is optimized for maximum compatibility.</p>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
-                            How do you ensure mobile responsiveness?
-                        </button>
-                        <div class="accordion-content" role="region">
-                            <p>We use CSS Grid, Flexbox, media queries, and mobile-first design principles. The viewport meta tag ensures proper scaling on mobile devices. All interactive elements are touch-friendly.</p>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
-                            What makes this website accessible?
-                        </button>
-                        <div class="accordion-content" role="region">
-                            <p>Semantic HTML, proper heading structure, alt attributes for images, keyboard navigation support, ARIA labels for interactive elements, and color contrast compliance with WCAG 2.1 standards.</p>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
-                            How is this website deployed online?
-                        </button>
-                        <div class="accordion-content" role="region">
-                            <p>This website can be deployed on multiple free platforms including GitHub Pages, Netlify, Vercel, Firebase Hosting, and Surge.sh. All offer SSL certificates, custom domains, and global CDN distribution.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Media Gallery -->
-            <section id="gallery" class="animate-on-scroll">
-                <h2>🎬 Media Gallery</h2>
-                <div class="gallery">
-                    <div class="media-item">
-                        <video controls poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200'%3E%3Crect width='100%25' height='100%25' fill='%23667eea'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='0.3em' fill='white' font-family='Arial' font-size='16'%3EVideo Placeholder%3C/text%3E%3C/svg%3E" aria-label="Sample video demonstration">
-                            <source src="data:video/mp4;base64," type="video/mp4">
-                            <p>Your browser doesn't support video playback.</p>
-                        </video>
-                        <p><strong>Sample Video</strong> - HTML5 Video Element</p>
-                    </div>
-
-                    <div class="media-item">
-                        <audio controls aria-label="Sample audio demonstration">
-                            <source src="data:audio/mpeg;base64," type="audio/mpeg">
-                            <p>Your browser doesn't support audio playback.</p>
-                        </audio>
-                        <p><strong>Sample Audio</strong> - HTML5 Audio Element</p>
-                    </div>
-
-                    <div class="media-item">
-                        <canvas id="demoCanvas" width="300" height="200" style="border: 2px solid var(--border-color); border-radius: var(--border-radius-md);" aria-label="Interactive drawing canvas"></canvas>
-                        <p><strong>Interactive Canvas</strong> - Click to draw!</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Data Visualization -->
-            <section id="data" class="animate-on-scroll">
-                <h2>📈 Data Analytics Dashboard</h2>
-                <div class="chart-container">
-                    <div class="chart-item">
-                        <h4>Website Performance</h4>
-                        <div class="chart-bar" role="progressbar" aria-label="Performance score" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
-                            <div class="chart-fill" style="width: 85%;"></div>
-                        </div>
-                        <p><strong>85%</strong> Optimization Score</p>
-                    </div>
-
-                    <div class="chart-item">
-                        <h4>Mobile Compatibility</h4>
-                        <div class="chart-bar" role="progressbar" aria-label="Mobile compatibility score" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100">
-                            <div class="chart-fill" style="width: 92%;"></div>
-                        </div>
-                        <p><strong>92%</strong> Mobile Friendly</p>
-                    </div>
-
-                    <div class="chart-item">
-                        <h4>Accessibility Score</h4>
-                        <div class="chart-bar" role="progressbar" aria-label="Accessibility score" aria-valuenow="96" aria-valuemin="0" aria-valuemax="100">
-                            <div class="chart-fill" style="width: 96%;"></div>
-                        </div>
-                        <p><strong>96%</strong> WCAG Compliant</p>
-                    </div>
-
-                    <div class="chart-item">
-                        <h4>Browser Support</h4>
-                        <div class="chart-bar" role="progressbar" aria-label="Browser support score" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100">
-                            <div class="chart-fill" style="width: 98%;"></div>
-                        </div>
-                        <p><strong>98%</strong> Cross-browser</p>
-                    </div>
-                </div>
-
-                <!-- Live Clock -->
-                <div class="clock-container">
-                    <h3>🕐 Live Clock</h3>
-                    <div id="liveClock" role="timer" aria-live="polite"></div>
-                    <div id="liveDate"></div>
-                </div>
-            </section>
-
-            <!-- Advanced Contact Form -->
-            <section id="contact" class="animate-on-scroll">
-                <h2>📧 Advanced Contact Form</h2>
-                <form class="form-grid" onsubmit="handleFormSubmit(event)" novalidate>
-                    <div>
-                        <div class="form-group">
-                            <label for="name">Full Name *</label>
-                            <input type="text" id="name" name="name" required minlength="2" maxlength="50" aria-describedby="name-error">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required aria-describedby="email-error">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" aria-describedby="phone-help">
-                            <small id="phone-help">10 digits, numbers only</small>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="company">Company</label>
-                            <input type="text" id="company" name="company">
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="form-group">
-                            <label for="subject">Subject *</label>
-                            <select id="subject" name="subject" required>
-                                <option value="">Select a subject</option>
-                                <option value="general">General Inquiry</option>
-                                <option value="technical">Technical Support</option>
-                                <option value="business">Business Partnership</option>
-                                <option value="feedback">Website Feedback</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="priority">Priority Level</label>
-                            <select id="priority" name="priority">
-                                <option value="low">Low</option>
-                                <option value="medium" selected>Medium</option>
-                                <option value="high">High</option>
-                                <option value="urgent">Urgent</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Message *</label>
-                            <textarea id="message" name="message" rows="6" required minlength="10" maxlength="500" placeholder="Please describe your inquiry in detail..." aria-describedby="message-count"></textarea>
-                            <small id="message-count">0/500 characters</small>
-                        </div>
-
-                        <div class="form-group">
-                            <label>
-                                <input type="checkbox" id="newsletter" name="newsletter" style="width: auto; margin-right: 10px;">
-                                Subscribe to our newsletter
-                            </label>
-                        </div>
-
-                        <button type="submit" class="submit-btn">Send Message 🚀</button>
-                    </div>
-                </form>
-
-                <div id="formResult" role="alert" aria-live="polite" style="margin-top: 2rem; padding: 1rem; border-radius: var(--border-radius-sm); display: none;"></div>
-            </section>
-        </main>
-
-        <!-- Footer with Additional Features -->
-        <footer>
-            <h3>🌟 TechHub Interactive</h3>
-            <p>Showcasing the power of modern HTML5, CSS3, and JavaScript</p>
-            <p>Built with ❤️ using semantic HTML, responsive CSS, and progressive enhancement</p>
-            <p><strong>Now Live Online:</strong> Accessible to users worldwide with free hosting</p>
-            <div style="margin-top: 2rem;">
-                <button onclick="scrollToTop()" class="back-to-top" aria-label="Scroll to top">
-                    ⬆️ Back to Top
-                </button>
             </div>
-        </footer>
+
+            <!-- Snake Game -->
+            <div id="snake-game" class="game-container">
+                <h3 style="text-align: center; margin-bottom: 1rem;">🐍 Snake Game</h3>
+                <div class="game-stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="snake-score">0</div>
+                        <div class="stat-label">Score</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="snake-high">0</div>
+                        <div class="stat-label">High Score</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="snake-level">1</div>
+                        <div class="stat-label">Level</div>
+                    </div>
+                </div>
+                <canvas id="snakeCanvas" width="400" height="400"></canvas>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <button class="play-btn" onclick="resetSnakeGame()">Reset Game</button>
+                    <p style="margin-top: 0.5rem; opacity: 0.8;">Use arrow keys or WASD to move</p>
+                </div>
+            </div>
+
+            <!-- Memory Game -->
+            <div id="memory-game" class="game-container">
+                <h3 style="text-align: center; margin-bottom: 1rem;">🧠 Memory Master</h3>
+                <div class="game-stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="memory-moves">0</div>
+                        <div class="stat-label">Moves</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="memory-matches">0</div>
+                        <div class="stat-label">Matches</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="memory-time">00:00</div>
+                        <div class="stat-label">Time</div>
+                    </div>
+                </div>
+                <div class="memory-grid" id="memory-grid"></div>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <button class="play-btn" onclick="resetMemoryGame()">New Game</button>
+                </div>
+            </div>
+
+            <!-- Reaction Time Game -->
+            <div id="reaction-game" class="game-container">
+                <h3 style="text-align: center; margin-bottom: 1rem;">⚡ Reaction Time Test</h3>
+                <div class="game-stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="reaction-time">0ms</div>
+                        <div class="stat-label">Last Time</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="reaction-best">∞</div>
+                        <div class="stat-label">Best Time</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="reaction-avg">0ms</div>
+                        <div class="stat-label">Average</div>
+                    </div>
+                </div>
+                <div id="reaction-area" style="
+                    width: 100%;
+                    height: 200px;
+                    background: var(--error);
+                    border-radius: 15px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    cursor: pointer;
+                    margin: 2rem 0;
+                    transition: all 0.3s ease;
+                ">
+                    Click to Start!
+                </div>
+                <div style="text-align: center;">
+                    <button class="play-btn" onclick="startReactionTest()">Start Test</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Music Section -->
+        <section id="music-section" class="game-container">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: var(--neon-pink);">🎵 Music Studio</h2>
+            
+            <!-- Virtual Piano -->
+            <div class="piano-container">
+                <h3 style="text-align: center; margin-bottom: 1rem;">🎹 Virtual Piano</h3>
+                <div class="piano" id="piano">
+                    <!-- Piano keys will be generated by JavaScript -->
+                </div>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <button class="play-btn" onclick="playDemo()">🎵 Play Demo</button>
+                    <button class="play-btn" onclick="recordMode()">🔴 Record</button>
+                </div>
+            </div>
+
+            <!-- Beat Maker -->
+            <div style="max-width: 600px; margin: 3rem auto; text-align: center;">
+                <h3 style="margin-bottom: 1rem;">🥁 Beat Maker</h3>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 2rem 0;">
+                    <button class="play-btn" onclick="playBeat('kick')" style="font-size: 2rem; padding: 2rem;">🥁</button>
+                    <button class="play-btn" onclick="playBeat('snare')" style="font-size: 2rem; padding: 2rem;">🔥</button>
+                    <button class="play-btn" onclick="playBeat('hihat')" style="font-size: 2rem; padding: 2rem;">✨</button>
+                    <button class="play-btn" onclick="playBeat('crash')" style="font-size: 2rem; padding: 2rem;">💥</button>
+                </div>
+                <div>
+                    <button class="play-btn" onclick="playAutobeat()">🎵 Auto Beat</button>
+                    <button class="play-btn" onclick="stopAutobeat()">⏹️ Stop</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Virtual Pet Section -->
+        <section id="pet-section" class="game-container">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: var(--neon-green);">🐾 Virtual Pet</h2>
+            
+            <div class="pet-container">
+                <div class="pet-avatar glow-effect" id="pet-avatar" onclick="petClick()">
+                    🐱
+                </div>
+                <h3 id="pet-name" style="margin-bottom: 1rem;">Whiskers</h3>
+                
+                <div class="pet-stats">
+                    <div class="stat-bar">
+                        <div>😊 Happiness</div>
+                        <div class="stat-fill happiness" id="happiness-bar" style="width: 80%;">80%</div>
+                    </div>
+                    <div class="stat-bar">
+                        <div>🍕 Hunger</div>
+                        <div class="stat-fill hunger" id="hunger-bar" style="width: 60%;">60%</div>
+                    </div>
+                    <div class="stat-bar">
+                        <div>⚡ Energy</div>
+                        <div class="stat-fill energy" id="energy-bar" style="width: 90%;">90%</div>
+                    </div>
+                </div>
+
+                <div class="pet-actions">
+                    <button class="pet-btn feed" onclick="feedPet()">🍕 Feed</button>
+                    <button class="pet-btn play" onclick="playWithPet()">🎾 Play</button>
+                    <button class="pet-btn sleep" onclick="petSleep()">😴 Sleep</button>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <input type="text" id="pet-name-input" placeholder="Enter pet name..." 
+                           style="padding: 10px; border-radius: 10px; border: 1px solid var(--glass-border); background: var(--glass); color: white; margin-right: 10px;">
+                    <button class="play-btn" onclick="renamePet()">Rename Pet</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Avatar Creator Section -->
+        <section id="avatars-section" class="game-container">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: var(--neon-blue);">👤 Avatar Creator</h2>
+            
+            <div class="avatar-creator">
+                <div class="avatar-preview glow-effect" id="avatar-preview">
+                    😊
+                </div>
+
+                <div class="avatar-controls">
+                    <div class="control-group">
+                        <h4>Face</h4>
+                        <div class="avatar-options">
+                            <div class="avatar-option selected" onclick="selectFace('😊')">😊</div>
+                            <div class="avatar-option" onclick="selectFace('😎')">😎</div>
+                            <div class="avatar-option" onclick="selectFace('🤔')">🤔</div>
+                            <div class="avatar-option" onclick="selectFace('😈')">😈</div>
+                            <div class="avatar-option" onclick="selectFace('🤖')">🤖</div>
+                            <div class="avatar-option" onclick="selectFace('👻')">👻</div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <h4>Background</h4>
+                        <div class="avatar-options">
+                            <div class="avatar-option selected" onclick="selectBg('accent')" style="background: var(--accent);"></div>
+                            <div class="avatar-option" onclick="selectBg('secondary')" style="background: var(--secondary);"></div>
+                            <div class="avatar-option" onclick="selectBg('success')" style="background: var(--success);"></div>
+                            <div class="avatar-option" onclick="selectBg('warning')" style="background: var(--warning);"></div>
+                            <div class="avatar-option" onclick="selectBg('error')" style="background: var(--error);"></div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <h4>Effects</h4>
+                        <div class="avatar-options">
+                            <div class="avatar-option" onclick="toggleEffect('glow')">✨</div>
+                            <div class="avatar-option" onclick="toggleEffect('rainbow')">🌈</div>
+                            <div class="avatar-option" onclick="toggleEffect('bounce')">🎾</div>
+                            <div class="avatar-option" onclick="toggleEffect('spin')">🌪️</div>
+                            <div class="avatar-option" onclick="toggleEffect('pulse')">💓</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <button class="play-btn" onclick="saveAvatar()">💾 Save Avatar</button>
+                    <button class="play-btn" onclick="randomAvatar()">🎲 Random</button>
+                    <button class="play-btn" onclick="shareAvatar()">📤 Share</button>
+                </div>
+            </div>
+        </section>
     </div>
 
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
     <script>
-        // Calculator Functions
-        function appendToDisplay(value) {
-            const display = document.getElementById('display');
-            display.value += value;
-            display.setAttribute('aria-label', `Calculator display showing ${display.value}`);
-        }
+        // Global variables
+        let currentSection = 'home';
+        let gameStates = {
+            snake: { score: 0, highScore: 0, level: 1, gameRunning: false },
+            memory: { moves: 0, matches: 0, time: 0, gameRunning: false },
+            reaction: { times: [], bestTime: Infinity, gameRunning: false },
+            pet: { happiness: 80, hunger: 60, energy: 90, name: 'Whiskers' },
+            avatar: { face: '😊', bg: 'accent', effects: [] }
+        };
 
-        function clearDisplay() {
-            const display = document.getElementById('display');
-            display.value = '';
-            display.setAttribute('aria-label', 'Calculator display cleared');
-        }
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            initializePiano();
+            initializeParticles();
+            loadGameData();
+            showSection('home');
+            startPetLoop();
+        });
 
-        function deleteLast() {
-            const display = document.getElementById('display');
-            display.value = display.value.slice(0, -1);
-            display.setAttribute('aria-label', `Calculator display showing ${display.value || 'empty'}`);
-        }
-
-        function calculate() {
-            const display = document.getElementById('display');
-            try {
-                const result = Function('"use strict"; return (' + display.value.replace('×', '*') + ')')();
-                display.value = result;
-                display.setAttribute('aria-label', `Calculator result: ${result}`);
-            } catch (error) {
-                display.value = 'Error';
-                display.setAttribute('aria-label', 'Calculator error');
-                setTimeout(clearDisplay, 2000);
-            }
-        }
-
-        // Quiz Functions
-        let score = 0;
-        let questionsAnswered = 0;
-
-        function selectAnswer(element, isCorrect) {
-            const options = element.parentNode.querySelectorAll('.option');
-            options.forEach(opt => {
-                opt.disabled = true;
-                opt.style.pointerEvents = 'none';
-                opt.style.opacity = '0.6';
-                opt.setAttribute('aria-checked', 'false');
+        // Section Navigation
+        function showSection(section) {
+            // Hide all sections
+            document.querySelectorAll('.game-container').forEach(el => {
+                el.classList.remove('active');
             });
+            
+            // Show selected section
+            const sectionEl = document.getElementById(section + '-section');
+            if (sectionEl) {
+                sectionEl.classList.add('active');
+            }
+            
+            currentSection = section;
+            showToast(`Switched to ${section} section!`, 'success');
+        }
 
-            element.setAttribute('aria-checked', 'true');
+        // Toast Notifications
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.textContent = message;
+            
+            document.body.appendChild(toast);
+            
+            setTimeout(() => toast.classList.add('show'), 100);
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => document.body.removeChild(toast), 300);
+            }, 3000);
+        }
 
-            if (isCorrect) {
-                element.style.background = 'var(--success-color)';
-                element.style.color = 'white';
-                element.style.borderColor = 'var(--success-color)';
-                score++;
+        // Particle System
+        function initializeParticles() {
+            setInterval(createParticle, 500);
+        }
+
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.animationDelay = Math.random() * 3 + 's';
+            particle.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
+            
+            document.getElementById('particles').appendChild(particle);
+            
+            setTimeout(() => {
+                if (particle.parentNode) {
+                    particle.parentNode.removeChild(particle);
+                }
+            }, 3000);
+        }
+
+        function createParticles() {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(createParticle, i * 100);
+            }
+            showToast('✨ Magic particles created!', 'success');
+        }
+
+        // Snake Game
+        let snake, food, dx, dy, snakeCanvas, snakeCtx;
+
+        function startSnakeGame() {
+            showSection('games');
+            document.getElementById('snake-game').classList.add('active');
+            
+            snakeCanvas = document.getElementById('snakeCanvas');
+            snakeCtx = snakeCanvas.getContext('2d');
+            
+            resetSnakeGame();
+        }
+
+        function resetSnakeGame() {
+            snake = [{x: 200, y: 200}];
+            food = {x: 100, y: 100};
+            dx = 20;
+            dy = 0;
+            gameStates.snake.score = 0;
+            gameStates.snake.level = 1;
+            gameStates.snake.gameRunning = true;
+            
+            updateSnakeStats();
+            gameLoop();
+        }
+
+        function gameLoop() {
+            if (!gameStates.snake.gameRunning) return;
+            
+            setTimeout(() => {
+                clearCanvas();
+                moveSnake();
+                drawFood();
+                drawSnake();
+                checkCollision();
+                gameLoop();
+            }, 150 - (gameStates.snake.level * 10));
+        }
+
+        function clearCanvas() {
+            snakeCtx.fillStyle = '#0f172a';
+            snakeCtx.fillRect(0, 0, snakeCanvas.width, snakeCanvas.height);
+        }
+
+        function drawSnake() {
+            snakeCtx.fillStyle = '#39ff14';
+            snakeCtx.shadowColor = '#39ff14';
+            snakeCtx.shadowBlur = 10;
+            
+            snake.forEach(segment => {
+                snakeCtx.fillRect(segment.x, segment.y, 18, 18);
+            });
+            
+            snakeCtx.shadowBlur = 0;
+        }
+
+        function drawFood() {
+            snakeCtx.fillStyle = '#ff006e';
+            snakeCtx.shadowColor = '#ff006e';
+            snakeCtx.shadowBlur = 15;
+            snakeCtx.fillRect(food.x, food.y, 18, 18);
+            snakeCtx.shadowBlur = 0;
+        }
+
+        function moveSnake() {
+            const head = {x: snake[0].x + dx, y: snake[0].y + dy};
+            snake.unshift(head);
+            
+            if (head.x === food.x && head.y === food.y) {
+                gameStates.snake.score += 10;
+                gameStates.snake.level = Math.floor(gameStates.snake.score / 100) + 1;
+                generateFood();
+                updateSnakeStats();
+                showToast(`Score: ${gameStates.snake.score}!`, 'success');
             } else {
-                element.style.background = 'var(--error-color)';
-                element.style.color = 'white';
-                element.style.borderColor = 'var(--error-color)';
-                
-                // Highlight correct answer
-                options.forEach(opt => {
-                    if (opt.onclick && opt.onclick.toString().includes('true')) {
-                        opt.style.background = 'var(--success-color)';
-                        opt.style.color = 'white';
-                        opt.style.borderColor = 'var(--success-color)';
-                    }
-                });
-            }
-
-            questionsAnswered++;
-            updateQuizResult();
-        }
-
-        function updateQuizResult() {
-            const resultDiv = document.getElementById('quizResult');
-            if (questionsAnswered === 2) {
-                const percentage = (score / 2) * 100;
-                resultDiv.innerHTML = `
-                    <div style="padding: 2rem; background: ${percentage >= 50 ? 'var(--success-color)' : 'var(--error-color)'}; color: white; border-radius: var(--border-radius-md);">
-                        Quiz Complete! Score: ${score}/2 (${percentage}%)
-                        <br><small>${percentage >= 50 ? 'Great job! 🎉' : 'Keep learning! 📚'}</small>
-                    </div>
-                `;
-                resultDiv.setAttribute('aria-label', `Quiz completed with score ${score} out of 2`);
+                snake.pop();
             }
         }
 
-        // Tab System
-        function openTab(evt, tabName) {
-            const tabcontent = document.getElementsByClassName('tab-content');
-            const tablinks = document.getElementsByClassName('tab');
+        function generateFood() {
+            food = {
+                x: Math.floor(Math.random() * 20) * 20,
+                y: Math.floor(Math.random() * 20) * 20
+            };
+        }
+
+        function checkCollision() {
+            const head = snake[0];
             
-            for (let i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].classList.remove('active');
+            // Wall collision
+            if (head.x < 0 || head.x >= 400 || head.y < 0 || head.y >= 400) {
+                gameOver();
             }
-
-            for (let i = 0; i < tablinks.length; i++) {
-                tablinks[i].classList.remove('active');
-                tablinks[i].setAttribute('aria-selected', 'false');
+            
+            // Self collision
+            for (let i = 1; i < snake.length; i++) {
+                if (head.x === snake[i].x && head.y === snake[i].y) {
+                    gameOver();
+                }
             }
-
-            document.getElementById(tabName).classList.add('active');
-            evt.currentTarget.classList.add('active');
-            evt.currentTarget.setAttribute('aria-selected', 'true');
         }
 
-        // Accordion
-        function toggleAccordion(element) {
-            const item = element.parentNode;
-            const isActive = item.classList.contains('active');
-            const isExpanded = element.getAttribute('aria-expanded') === 'true';
+        function gameOver() {
+            gameStates.snake.gameRunning = false;
+            if (gameStates.snake.score > gameStates.snake.highScore) {
+                gameStates.snake.highScore = gameStates.snake.score;
+                showToast('🎉 New High Score!', 'success');
+            } else {
+                showToast('Game Over! Try again!', 'error');
+            }
+            updateSnakeStats();
+            saveGameData();
+        }
+
+        function updateSnakeStats() {
+            document.getElementById('snake-score').textContent = gameStates.snake.score;
+            document.getElementById('snake-high').textContent = gameStates.snake.highScore;
+            document.getElementById('snake-level').textContent = gameStates.snake.level;
+        }
+
+        // Snake controls
+        document.addEventListener('keydown', (e) => {
+            if (!gameStates.snake.gameRunning) return;
             
-            // Close all accordion items
-            document.querySelectorAll('.accordion-item').forEach(item => {
-                item.classList.remove('active');
-                const header = item.querySelector('.accordion-header');
-                header.setAttribute('aria-expanded', 'false');
+            const key = e.key;
+            if ((key === 'ArrowUp' || key === 'w') && dy === 0) {
+                dx = 0; dy = -20;
+            } else if ((key === 'ArrowDown' || key === 's') && dy === 0) {
+                dx = 0; dy = 20;
+            } else if ((key === 'ArrowLeft' || key === 'a') && dx === 0) {
+                dx = -20; dy = 0;
+            } else if ((key === 'ArrowRight' || key === 'd') && dx === 0) {
+                dx = 20; dy = 0;
+            }
+        });
+
+        // Memory Game
+        let memoryCards = [];
+        let flippedCards = [];
+        let memoryTimer;
+
+        const cardEmojis = ['🎮', '🎵', '🎨', '🚀', '⭐', '💎', '🔥', '⚡'];
+
+        function startMemoryGame() {
+            showSection('games');
+            document.getElementById('memory-game').classList.add('active');
+            resetMemoryGame();
+        }
+
+        function resetMemoryGame() {
+            gameStates.memory = { moves: 0, matches: 0, time: 0, gameRunning: true };
+            memoryCards = [...cardEmojis, ...cardEmojis].sort(() => Math.random() - 0.5);
+            flippedCards = [];
+            
+            const grid = document.getElementById('memory-grid');
+            grid.innerHTML = '';
+            
+            memoryCards.forEach((emoji, index) => {
+                const card = document.createElement('div');
+                card.className = 'memory-card';
+                card.dataset.emoji = emoji;
+                card.dataset.index = index;
+                card.addEventListener('click', flipCard);
+                grid.appendChild(card);
             });
+            
+            startMemoryTimer();
+            updateMemoryStats();
+        }
 
-            // Open clicked item if it wasn't active
-            if (!isActive) {
-                item.classList.add('active');
-                element.setAttribute('aria-expanded', 'true');
+        function flipCard(e) {
+            if (!gameStates.memory.gameRunning) return;
+            
+            const card = e.target;
+            if (card.classList.contains('flipped') || flippedCards.length >= 2) return;
+            
+            card.classList.add('flipped');
+            card.textContent = card.dataset.emoji;
+            flippedCards.push(card);
+            
+            if (flippedCards.length === 2) {
+                gameStates.memory.moves++;
+                checkMemoryMatch();
+                updateMemoryStats();
             }
         }
 
-        // Canvas Drawing
-        function initCanvas() {
-            const canvas = document.getElementById('demoCanvas');
-            if (!canvas || !canvas.getContext) return;
+        function checkMemoryMatch() {
+            const [card1, card2] = flippedCards;
             
-            const ctx = canvas.getContext('2d');
-            let isDrawing = false;
-
-            // Create gradient background
-            const gradient = ctx.createLinearGradient(0, 0, 300, 200);
-            gradient.addColorStop(0, '#667eea');
-            gradient.addColorStop(1, '#764ba2');
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, 300, 200);
-
-            // Add text
-            ctx.fillStyle = 'white';
-            ctx.font = '16px Arial';
-            ctx.textAlign = 'center';
-            ctx.fillText('Click and drag to draw!', 150, 100);
-
-            // Mouse events
-            canvas.addEventListener('mousedown', startDrawing);
-            canvas.addEventListener('mousemove', draw);
-            canvas.addEventListener('mouseup', stopDrawing);
-            canvas.addEventListener('mouseout', stopDrawing);
-
-            // Touch events for mobile
-            canvas.addEventListener('touchstart', handleTouch);
-            canvas.addEventListener('touchmove', handleTouch);
-            canvas.addEventListener('touchend', stopDrawing);
-
-            function startDrawing(e) {
-                isDrawing = true;
-                const rect = canvas.getBoundingClientRect();
-                ctx.beginPath();
-                ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+            if (card1.dataset.emoji === card2.dataset.emoji) {
+                card1.classList.add('matched');
+                card2.classList.add('matched');
+                gameStates.memory.matches++;
+                showToast('Match found! 🎉', 'success');
+                
+                if (gameStates.memory.matches === 8) {
+                    gameStates.memory.gameRunning = false;
+                    showToast(`🏆 You won in ${gameStates.memory.moves} moves!`, 'success');
+                    clearInterval(memoryTimer);
+                }
+            } else {
+                setTimeout(() => {
+                    card1.classList.remove('flipped');
+                    card2.classList.remove('flipped');
+                    card1.textContent = '';
+                    card2.textContent = '';
+                }, 1000);
             }
-
-            function draw(e) {
-                if (!isDrawing) return;
-                const rect = canvas.getBoundingClientRect();
-                ctx.lineWidth = 3;
-                ctx.lineCap = 'round';
-                ctx.strokeStyle = '#fff';
-                ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
-                ctx.stroke();
-                ctx.beginPath();
-                ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
-            }
-
-            function handleTouch(e) {
-                e.preventDefault();
-                const touch = e.touches[0];
-                const mouseEvent = new MouseEvent(e.type === 'touchstart' ? 'mousedown' : 
-                                                 e.type === 'touchmove' ? 'mousemove' : 'mouseup', {
-                    clientX: touch.clientX,
-                    clientY: touch.clientY
-                });
-                canvas.dispatchEvent(mouseEvent);
-            }
-
-            function stopDrawing() {
-                isDrawing = false;
-                ctx.beginPath();
-            }
+            
+            flippedCards = [];
         }
 
-        // Form Handling
-        function handleFormSubmit(event) {
-            event.preventDefault();
+        function startMemoryTimer() {
+            memoryTimer = setInterval(() => {
+                if (gameStates.memory.gameRunning) {
+                    gameStates.memory.time++;
+                    updateMemoryStats();
+                }
+            }, 1000);
+        }
+
+        function updateMemoryStats() {
+            document.getElementById('memory-moves').textContent = gameStates.memory.moves;
+            document.getElementById('memory-matches').textContent = gameStates.memory.matches;
             
-            const form = event.target;
-            const formData = new FormData(form);
-            const resultDiv = document.getElementById('formResult');
+            const minutes = Math.floor(gameStates.memory.time / 60);
+            const seconds = gameStates.memory.time % 60;
+            document.getElementById('memory-time').textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        // Reaction Time Game
+        let reactionStartTime;
+        let reactionTimeout;
+
+        function startReactionGame() {
+            showSection('games');
+            document.getElementById('reaction-game').classList.add('active');
+        }
+
+        function startReactionTest() {
+            const area = document.getElementById('reaction-area');
+            area.style.background = 'var(--error)';
+            area.textContent = 'Wait for green...';
+            area.onclick = null;
             
-            // Basic validation
-            const requiredFields = form.querySelectorAll('[required]');
-            let isValid = true;
+            clearTimeout(reactionTimeout);
+            reactionTimeout = setTimeout(() => {
+                area.style.background = 'var(--success)';
+                area.textContent = 'CLICK NOW!';
+                reactionStartTime = Date.now();
+                area.onclick = recordReactionTime;
+            }, Math.random() * 3000 + 1000);
+        }
+
+        function recordReactionTime() {
+            const reactionTime = Date.now() - reactionStartTime;
+            gameStates.reaction.times.push(reactionTime);
             
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    field.classList.add('error');
-                    isValid = false;
-                } else {
-                    field.classList.remove('error');
+            if (reactionTime < gameStates.reaction.bestTime) {
+                gameStates.reaction.bestTime = reactionTime;
+                showToast(`🏆 New best time: ${reactionTime}ms!`, 'success');
+            } else {
+                showToast(`Reaction time: ${reactionTime}ms`, 'info');
+            }
+            
+            updateReactionStats();
+            
+            const area = document.getElementById('reaction-area');
+            area.style.background = 'var(--accent)';
+            area.textContent = 'Click to try again!';
+            area.onclick = startReactionTest;
+        }
+
+        function updateReactionStats() {
+            const times = gameStates.reaction.times;
+            const lastTime = times[times.length - 1] || 0;
+            const avgTime = times.length > 0 ? Math.round(times.reduce((a, b) => a + b) / times.length) : 0;
+            
+            document.getElementById('reaction-time').textContent = lastTime + 'ms';
+            document.getElementById('reaction-best').textContent = 
+                gameStates.reaction.bestTime === Infinity ? '∞' : gameStates.reaction.bestTime + 'ms';
+            document.getElementById('reaction-avg').textContent = avgTime + 'ms';
+        }
+
+        // Virtual Piano
+        const notes = {
+            'C': 261.63, 'C#': 277.18, 'D': 293.66, 'D#': 311.13,
+            'E': 329.63, 'F': 349.23, 'F#': 369.99, 'G': 392.00,
+            'G#': 415.30, 'A': 440.00, 'A#': 466.16, 'B': 493.88
+        };
+
+        let audioContext;
+        let isRecording = false;
+        let recordedNotes = [];
+
+        function initializePiano() {
+            const piano = document.getElementById('piano');
+            const whiteKeys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+            const blackKeys = ['C#', 'D#', null, 'F#', 'G#', 'A#', null];
+            
+            // Create white keys
+            whiteKeys.forEach(note => {
+                const key = document.createElement('div');
+                key.className = 'piano-key';
+                key.dataset.note = note;
+                key.addEventListener('click', () => playNote(note));
+                piano.appendChild(key);
+            });
+            
+            // Create black keys
+            blackKeys.forEach((note, index) => {
+                if (note) {
+                    const key = document.createElement('div');
+                    key.className = 'piano-key black';
+                    key.dataset.note = note;
+                    key.style.left = `${(index + 1) * 52 - 15}px`;
+                    key.addEventListener('click', () => playNote(note));
+                    piano.appendChild(key);
                 }
             });
             
-            if (!isValid) {
-                resultDiv.style.display = 'block';
-                resultDiv.style.background = 'var(--error-color)';
-                resultDiv.style.color = 'white';
-                resultDiv.innerHTML = '❌ Please fill in all required fields.';
-                return;
+            // Initialize Web Audio API
+            try {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            } catch (e) {
+                console.log('Web Audio API not supported');
+            }
+        }
+
+        function playNote(note) {
+            if (!audioContext) return;
+            
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.value = notes[note];
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 1);
+            
+            // Visual feedback
+            const keyElement = document.querySelector(`[data-note="${note}"]`);
+            if (keyElement) {
+                keyElement.classList.add('pressed');
+                setTimeout(() => keyElement.classList.remove('pressed'), 200);
             }
             
-            // Simulate form processing
-            resultDiv.style.display = 'block';
-            resultDiv.style.background = 'var(--success-color)';
-            resultDiv.style.color = 'white';
-            resultDiv.innerHTML = '✅ Message sent successfully! We\'ll get back to you soon.';
+            if (isRecording) {
+                recordedNotes.push({ note, time: Date.now() });
+            }
+        }
+
+        function playDemo() {
+            const melody = ['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C'];
+            melody.forEach((note, index) => {
+                setTimeout(() => playNote(note), index * 300);
+            });
+            showToast('🎵 Playing demo melody!', 'info');
+        }
+
+        function recordMode() {
+            if (!isRecording) {
+                isRecording = true;
+                recordedNotes = [];
+                showToast('🔴 Recording started!', 'success');
+                document.querySelector('button[onclick="recordMode()"]').textContent = '⏹️ Stop';
+            } else {
+                isRecording = false;
+                showToast(`🎵 Recording stopped! ${recordedNotes.length} notes recorded.`, 'info');
+                document.querySelector('button[onclick="recordMode()"]').textContent = '🔴 Record';
+                
+                if (recordedNotes.length > 0) {
+                    setTimeout(() => {
+                        if (confirm('Play back your recording?')) {
+                            playRecording();
+                        }
+                    }, 500);
+                }
+            }
+        }
+
+        function playRecording() {
+            if (recordedNotes.length === 0) return;
             
-            // Reset form
-            form.reset();
-            updateCharacterCount();
+            const startTime = recordedNotes[0].time;
+            recordedNotes.forEach(({ note, time }) => {
+                setTimeout(() => playNote(note), time - startTime);
+            });
+        }
+
+        // Beat Maker
+        let autobeatInterval;
+
+        function playBeat(type) {
+            if (!audioContext) return;
             
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-                resultDiv.style.display = 'none';
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            const filterNode = audioContext.createBiquadFilter();
+            
+            oscillator.connect(filterNode);
+            filterNode.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            switch (type) {
+                case 'kick':
+                    oscillator.frequency.value = 60;
+                    oscillator.type = 'sine';
+                    break;
+                case 'snare':
+                    oscillator.frequency.value = 200;
+                    oscillator.type = 'sawtooth';
+                    filterNode.frequency.value = 1000;
+                    break;
+                case 'hihat':
+                    oscillator.frequency.value = 8000;
+                    oscillator.type = 'square';
+                    break;
+                case 'crash':
+                    oscillator.frequency.value = 4000;
+                    oscillator.type = 'sawtooth';
+                    break;
+            }
+            
+            gainNode.gain.setValueAtTime(0.5, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.3);
+        }
+
+        function playAutobeat() {
+            stopAutobeat();
+            const pattern = ['kick', null, 'snare', 'hihat', 'kick', 'hihat', 'snare', null];
+            let index = 0;
+            
+            autobeatInterval = setInterval(() => {
+                if (pattern[index]) {
+                    playBeat(pattern[index]);
+                }
+                index = (index + 1) % pattern.length;
+            }, 200);
+            
+            showToast('🥁 Auto beat started!', 'success');
+        }
+
+        function stopAutobeat() {
+            if (autobeatInterval) {
+                clearInterval(autobeatInterval);
+                autobeatInterval = null;
+                showToast('⏹️ Beat stopped!', 'info');
+            }
+        }
+
+        // Virtual Pet
+        function startPetLoop() {
+            setInterval(() => {
+                if (gameStates.pet.happiness > 0) gameStates.pet.happiness -= 0.5;
+                if (gameStates.pet.hunger > 0) gameStates.pet.hunger -= 0.3;
+                if (gameStates.pet.energy > 0) gameStates.pet.energy -= 0.2;
+                
+                updatePetDisplay();
             }, 5000);
         }
 
-        // Character count for message field
-        function updateCharacterCount() {
-            const messageField = document.getElementById('message');
-            const countDisplay = document.getElementById('message-count');
+        function petClick() {
+            gameStates.pet.happiness = Math.min(100, gameStates.pet.happiness + 5);
+            updatePetDisplay();
+            showToast(`${gameStates.pet.name} is happy! 😊`, 'success');
             
-            if (messageField && countDisplay) {
-                const count = messageField.value.length;
-                countDisplay.textContent = `${count}/500 characters`;
-                
-                if (count > 450) {
-                    countDisplay.style.color = 'var(--error-color)';
-                } else if (count > 400) {
-                    countDisplay.style.color = 'var(--warning-color)';
-                } else {
-                    countDisplay.style.color = 'var(--text-light)';
-                }
-            }
-        }
-
-        // Live Clock
-        function updateClock() {
-            const now = new Date();
-            const timeOptions = { 
-                hour12: true, 
-                hour: '2-digit', 
-                minute: '2-digit', 
-                second: '2-digit' 
-            };
-            const dateOptions = { 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-            };
-            
-            const timeString = now.toLocaleTimeString('en-US', timeOptions);
-            const dateString = now.toLocaleDateString('en-US', dateOptions);
-            
-            const clockElement = document.getElementById('liveClock');
-            const dateElement = document.getElementById('liveDate');
-            
-            if (clockElement) clockElement.textContent = timeString;
-            if (dateElement) dateElement.textContent = dateString;
-        }
-
-        // Progress Bar
-        function updateProgress() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const docHeight = document.body.offsetHeight;
-            const winHeight = window.innerHeight;
-            const scrollPercent = Math.min(scrollTop / (docHeight - winHeight), 1);
-            const scrollPercentRounded = Math.round(scrollPercent * 100);
-            
-            const progressBar = document.getElementById('pageProgress');
-            if (progressBar) {
-                progressBar.style.width = scrollPercentRounded + '%';
-                progressBar.textContent = scrollPercentRounded + '%';
-                progressBar.setAttribute('aria-valuenow', scrollPercentRounded);
-            }
-        }
-
-        // Scroll animations
-        function checkScroll() {
-            const elements = document.querySelectorAll('.animate-on-scroll');
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('visible');
-                }
-            });
-        }
-
-        // Theme Toggle
-        function toggleTheme() {
-            const body = document.body;
-            const isDark = body.classList.contains('dark-theme');
-            const toggle = document.querySelector('.theme-toggle');
-            
-            if (isDark) {
-                body.classList.remove('dark-theme');
-                toggle.textContent = '🌙';
-                toggle.setAttribute('aria-label', 'Switch to dark mode');
-                localStorage.setItem('theme', 'light');
-            } else {
-                body.classList.add('dark-theme');
-                toggle.textContent = '☀️';
-                toggle.setAttribute('aria-label', 'Switch to light mode');
-                localStorage.setItem('theme', 'dark');
-            }
-        }
-
-        // Smooth scrolling for navigation
-        function initSmoothScroll() {
-            document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                        
-                        // Update focus for accessibility
-                        target.setAttribute('tabindex', '-1');
-                        target.focus();
-                    }
-                });
-            });
-        }
-
-        // Scroll to top
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
-        // Keyboard navigation for calculator
-        function initCalculatorKeyboard() {
-            document.addEventListener('keydown', function(event) {
-                const display = document.getElementById('display');
-                if (!display) return;
-                
-                const isCalculatorFocused = document.activeElement === display || 
-                                          document.activeElement.closest('.calculator');
-                
-                if (!isCalculatorFocused) return;
-                
-                const key = event.key;
-                
-                if ('0123456789+-*/().'.includes(key)) {
-                    appendToDisplay(key === '*' ? '×' : key);
-                    event.preventDefault();
-                } else if (key === 'Enter' || key === '=') {
-                    calculate();
-                    event.preventDefault();
-                } else if (key === 'Escape' || key.toLowerCase() === 'c') {
-                    clearDisplay();
-                    event.preventDefault();
-                } else if (key === 'Backspace') {
-                    deleteLast();
-                    event.preventDefault();
-                }
-            });
-        }
-
-        // Form validation enhancements
-        function initFormValidation() {
-            const messageField = document.getElementById('message');
-            if (messageField) {
-                messageField.addEventListener('input', updateCharacterCount);
-                updateCharacterCount();
-            }
-            
-            document.addEventListener('input', function(event) {
-                if (event.target.matches('input, textarea, select')) {
-                    const field = event.target;
-                    field.classList.remove('error', 'success');
-                    
-                    // Real-time validation feedback
-                    if (field.type === 'email' && field.value) {
-                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                        if (!emailRegex.test(field.value)) {
-                            field.classList.add('error');
-                        } else {
-                            field.classList.add('success');
-                        }
-                    }
-                    
-                    if (field.type === 'tel' && field.value) {
-                        const phoneRegex = /^\d{10}$/;
-                        if (!phoneRegex.test(field.value.replace(/\D/g, ''))) {
-                            field.classList.add('error');
-                        } else {
-                            field.classList.add('success');
-                        }
-                    }
-                }
-            });
-        }
-
-        // Initialize everything when page loads
-        function initApp() {
-            // Initialize components
-            initCanvas();
-            initSmoothScroll();
-            initCalculatorKeyboard();
-            initFormValidation();
-            
-            // Start clock
-            updateClock();
-            setInterval(updateClock, 1000);
-            
-            // Initialize scroll animations
-            checkScroll();
-            updateProgress();
-            
-            // Load saved theme
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                toggleTheme();
-            }
-            
-            // Animate chart bars
+            // Animate pet
+            const petAvatar = document.getElementById('pet-avatar');
+            petAvatar.style.transform = 'scale(1.2)';
             setTimeout(() => {
-                document.querySelectorAll('.chart-fill').forEach(bar => {
-                    const width = bar.style.width;
-                    bar.style.width = '0%';
-                    setTimeout(() => {
-                        bar.style.width = width;
-                    }, 500);
-                });
-            }, 1000);
-            
-            // Show page with loading animation
-            document.body.classList.remove('loading');
-            document.body.classList.add('loaded');
+                petAvatar.style.transform = 'scale(1)';
+            }, 200);
         }
 
-        // Event listeners
-        document.addEventListener('DOMContentLoaded', initApp);
+        function feedPet() {
+            gameStates.pet.hunger = Math.min(100, gameStates.pet.hunger + 20);
+            gameStates.pet.happiness = Math.min(100, gameStates.pet.happiness + 10);
+            updatePetDisplay();
+            showToast(`${gameStates.pet.name} enjoyed the meal! 🍕`, 'success');
+        }
 
-        window.addEventListener('scroll', () => {
-            checkScroll();
-            updateProgress();
-        });
+        function playWithPet() {
+            gameStates.pet.happiness = Math.min(100, gameStates.pet.happiness + 15);
+            gameStates.pet.energy = Math.max(0, gameStates.pet.energy - 10);
+            updatePetDisplay();
+            showToast(`${gameStates.pet.name} had fun playing! 🎾`, 'success');
+        }
 
-        window.addEventListener('resize', checkScroll);
+        function petSleep() {
+            gameStates.pet.energy = 100;
+            gameStates.pet.happiness = Math.min(100, gameStates.pet.happiness + 5);
+            updatePetDisplay();
+            showToast(`${gameStates.pet.name} feels refreshed! 😴`, 'success');
+        }
 
-        // Service Worker registration for PWA capabilities
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(registration => console.log('SW registered'))
-                    .catch(error => console.log('SW registration failed'));
+        function renamePet() {
+            const newName = document.getElementById('pet-name-input').value.trim();
+            if (newName) {
+                gameStates.pet.name = newName;
+                document.getElementById('pet-name').textContent = newName;
+                document.getElementById('pet-name-input').value = '';
+                showToast(`Pet renamed to ${newName}!`, 'success');
+                saveGameData();
+            }
+        }
+
+        function updatePetDisplay() {
+            const { happiness, hunger, energy, name } = gameStates.pet;
+            
+            document.getElementById('happiness-bar').style.width = happiness + '%';
+            document.getElementById('happiness-bar').textContent = Math.round(happiness) + '%';
+            
+            document.getElementById('hunger-bar').style.width = hunger + '%';
+            document.getElementById('hunger-bar').textContent = Math.round(hunger) + '%';
+            
+            document.getElementById('energy-bar').style.width = energy + '%';
+            document.getElementById('energy-bar').textContent = Math.round(energy) + '%';
+            
+            document.getElementById('pet-name').textContent = name;
+            
+            // Change pet mood based on stats
+            const petAvatar = document.getElementById('pet-avatar');
+            if (happiness < 30 || hunger < 30) {
+                petAvatar.textContent = '😢';
+            } else if (happiness > 80 && hunger > 80) {
+                petAvatar.textContent = '😸';
+            } else {
+                petAvatar.textContent = '🐱';
+            }
+        }
+
+        // Avatar Creator
+        let currentAvatar = { face: '😊', bg: 'accent', effects: [] };
+
+        function selectFace(face) {
+            document.querySelectorAll('.control-group:first-child .avatar-option').forEach(el => 
+                el.classList.remove('selected'));
+            event.target.classList.add('selected');
+            
+            currentAvatar.face = face;
+            updateAvatarPreview();
+        }
+
+        function selectBg(bg) {
+            document.querySelectorAll('.control-group:nth-child(2) .avatar-option').forEach(el => 
+                el.classList.remove('selected'));
+            event.target.classList.add('selected');
+            
+            currentAvatar.bg = bg;
+            updateAvatarPreview();
+        }
+
+        function toggleEffect(effect) {
+            const index = currentAvatar.effects.indexOf(effect);
+            if (index > -1) {
+                currentAvatar.effects.splice(index, 1);
+                event.target.classList.remove('selected');
+            } else {
+                currentAvatar.effects.push(effect);
+                event.target.classList.add('selected');
+            }
+            updateAvatarPreview();
+        }
+
+        function updateAvatarPreview() {
+            const preview = document.getElementById('avatar-preview');
+            preview.textContent = currentAvatar.face;
+            
+            // Remove old classes
+            preview.className = 'avatar-preview glow-effect';
+            
+            // Apply background
+            const bgColors = {
+                'accent': 'var(--accent)',
+                'secondary': 'var(--secondary)',
+                'success': 'var(--success)',
+                'warning': 'var(--warning)',
+                'error': 'var(--error)'
+            };
+            preview.style.background = bgColors[currentAvatar.bg];
+            
+            // Apply effects
+            currentAvatar.effects.forEach(effect => {
+                switch (effect) {
+                    case 'glow':
+                        preview.style.boxShadow = '0 0 40px var(--neon-blue)';
+                        break;
+                    case 'rainbow':
+                        preview.classList.add('rainbow-text');
+                        break;
+                    case 'bounce':
+                        preview.style.animation = 'bounce 0.5s ease infinite';
+                        break;
+                    case 'spin':
+                        preview.style.animation = 'spin 2s linear infinite';
+                        break;
+                    case 'pulse':
+                        preview.style.animation = 'pulse 1s ease infinite';
+                        break;
+                }
             });
         }
 
-        // Error handling
-        window.addEventListener('error', function(event) {
-            console.error('JavaScript error:', event.error);
-        });
+        function saveAvatar() {
+            gameStates.avatar = { ...currentAvatar };
+            saveGameData();
+            showToast('💾 Avatar saved!', 'success');
+        }
 
-        // Performance monitoring
-        window.addEventListener('load', function() {
-            const loadTime = performance.now();
-            console.log(`🚀 Page loaded in ${Math.round(loadTime)}ms`);
+        function randomAvatar() {
+            const faces = ['😊', '😎', '🤔', '😈', '🤖', '👻'];
+            const backgrounds = ['accent', 'secondary', 'success', 'warning', 'error'];
+            const effects = ['glow', 'rainbow', 'bounce', 'spin', 'pulse'];
             
-            // Analytics (placeholder)
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'page_load_time', {
-                    value: Math.round(loadTime)
-                });
+            currentAvatar.face = faces[Math.floor(Math.random() * faces.length)];
+            currentAvatar.bg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+            currentAvatar.effects = Math.random() > 0.5 ? [effects[Math.floor(Math.random() * effects.length)]] : [];
+            
+            updateAvatarPreview();
+            showToast('🎲 Random avatar generated!', 'success');
+        }
+
+        function shareAvatar() {
+            const avatarData = `My avatar: ${currentAvatar.face} with ${currentAvatar.bg} background!`;
+            if (navigator.share) {
+                navigator.share({ text: avatarData });
+            } else {
+                navigator.clipboard.writeText(avatarData);
+                showToast('📋 Avatar data copied to clipboard!', 'success');
+            }
+        }
+
+        // Data Persistence
+        function saveGameData() {
+            localStorage.setItem('techHubGameData', JSON.stringify(gameStates));
+        }
+
+        function loadGameData() {
+            const saved = localStorage.getItem('techHubGameData');
+            if (saved) {
+                const data = JSON.parse(saved);
+                gameStates = { ...gameStates, ...data };
+                updateAllStats();
+            }
+        }
+
+        function updateAllStats() {
+            updateSnakeStats();
+            updateMemoryStats();
+            updateReactionStats();
+            updatePetDisplay();
+            currentAvatar = gameStates.avatar;
+            updateAvatarPreview();
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                switch (e.key) {
+                    case '1':
+                        e.preventDefault();
+                        showSection('home');
+                        break;
+                    case '2':
+                        e.preventDefault();
+                        showSection('games');
+                        break;
+                    case '3':
+                        e.preventDefault();
+                        showSection('music');
+                        break;
+                    case '4':
+                        e.preventDefault();
+                        showSection('avatars');
+                        break;
+                    case '5':
+                        e.preventDefault();
+                        showSection('pet');
+                        break;
+                }
             }
         });
+
+        // Performance optimization
+        let lastScrollTime = 0;
+        window.addEventListener('scroll', () => {
+            const now = Date.now();
+            if (now - lastScrollTime > 16) { // 60fps throttling
+                lastScrollTime = now;
+                // Add scroll-based animations here if needed
+            }
+        });
+
+        // Initialize everything
+        showToast('🎮 Welcome to TechHub Interactive! Use Ctrl+1-5 for quick navigation.', 'success');
     </script>
 </body>
 </html>
