@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechHub Interactive - Advanced HTML Showcase</title>
+    <style>
+        /* Advanced CSS for interactive elements */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav li {
+            margin: 0 1rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover, nav a:focus {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 4rem 0;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        /* Sections */
+        section {
+            background: white;
+            margin: 2rem 0;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        h2 {
+            color: #667eea;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+
+        /* Interactive Calculator */
+        .calculator {
+            max-width: 400px;
+            margin: 0 auto;
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .calc-display {
+            width: 100%;
+            height: 60px;
+            font-size: 1.5rem;
+            text-align: right;
+            padding: 0 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            background: white;
+        }
+
+        .calc-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .calc-btn {
+            height: 50px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #667eea;
+            color: white;
+        }
+
+        .calc-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .calc-btn.operator {
+            background: #ff6b6b;
+        }
+
+        .calc-btn.clear {
+            background: #ffa500;
+        }
+
+        /* Contact Form */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #555;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            background: #f0f0f0;
+            border-radius: 25px;
+            padding: 3px;
+            margin: 1rem 0;
+        }
+
+        .progress-bar {
+            height: 25px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 25px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Media Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .media-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .media-item:hover {
+            transform: translateY(-5px);
+        }
+
+        video, audio {
+            width: 100%;
+            border-radius: 15px;
+        }
+
+        /* Quiz Section */
+        .quiz-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .question {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+        }
+
+        .options {
+            display: grid;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+
+        .option {
+            padding: 1rem;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .calc-buttons {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            section {
+                padding: 2rem 1rem;
+            }
+        }
+
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            background: white;
+        }
+
+        /* Data Visualization */
+        .chart-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .chart-item {
+            text-align: center;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .chart-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .chart-bar {
+            width: 100%;
+            height: 20px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .chart-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 10px;
+            transition: width 2s ease;
+        }
+
+        /* Accordion */
+        .accordion {
+            margin-top: 2rem;
+        }
+
+        .accordion-item {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background: #f8f9fa;
+            padding: 1rem 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: #e9ecef;
+        }
+
+        .accordion-content {
+            padding: 0 2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 200px;
+            padding: 2rem;
+        }
+
+        /* Tab System */
+        .tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 5px;
+            margin-bottom: 2rem;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .tab.active {
+            background: white;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark Mode">🌙</button>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#calculator">Calculator</a></li>
+            <li><a href="#quiz">Quiz</a></li>
+            <li><a href="#gallery">Media</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#data">Analytics</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Header -->
+        <header id="home">
+            <h1>TechHub Interactive</h1>
+            <p>Advanced HTML5 Showcase with Multiple Interactive Features</p>
+            <div class="progress-container">
+                <div class="progress-bar" id="pageProgress" style="width: 0%">0%</div>
+            </div>
+        </header>
+
+        <!-- Interactive Calculator Section -->
+        <section id="calculator" class="animate-on-scroll">
+            <h2>🧮 Interactive Calculator</h2>
+            <div class="calculator">
+                <input type="text" class="calc-display" id="display" readonly>
+                <div class="calc-buttons">
+                    <button class="calc-btn clear" onclick="clearDisplay()">C</button>
+                    <button class="calc-btn operator" onclick="deleteLast()">⌫</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('/')">/</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('*')">×</button>
+                    
+                    <button class="calc-btn" onclick="appendToDisplay('7')">7</button>
+                    <button class="calc-btn" onclick="appendToDisplay('8')">8</button>
+                    <button class="calc-btn" onclick="appendToDisplay('9')">9</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('-')">-</button>
+                    
+                    <button class="calc-btn" onclick="appendToDisplay('4')">4</button>
+                    <button class="calc-btn" onclick="appendToDisplay('5')">5</button>
+                    <button class="calc-btn" onclick="appendToDisplay('6')">6</button>
+                    <button class="calc-btn operator" onclick="appendToDisplay('+')">+</button>
+                    
+                    <button class="calc-btn" onclick="appendToDisplay('1')">1</button>
+                    <button class="calc-btn" onclick="appendToDisplay('2')">2</button>
+                    <button class="calc-btn" onclick="appendToDisplay('3')">3</button>
+                    <button class="calc-btn operator" onclick="calculate()" rowspan="2">=</button>
+                    
+                    <button class="calc-btn" onclick="appendToDisplay('0')" style="grid-column: span 2;">0</button>
+                    <button class="calc-btn" onclick="appendToDisplay('.')">.</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Quiz Section -->
+        <section id="quiz" class="animate-on-scroll">
+            <h2>🧠 Knowledge Quiz</h2>
+            <div class="quiz-container">
+                <div class="question">
+                    <h3>What does HTML stand for?</h3>
+                    <div class="options">
+                        <div class="option" onclick="selectAnswer(this, false)">Hypertext Markup Language</div>
+                        <div class="option" onclick="selectAnswer(this, true)">HyperText Markup Language</div>
+                        <div class="option" onclick="selectAnswer(this, false)">High Tech Modern Language</div>
+                        <div class="option" onclick="selectAnswer(this, false)">Home Tool Markup Language</div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>Which HTML5 element is used for navigation?</h3>
+                    <div class="options">
+                        <div class="option" onclick="selectAnswer(this, false)">&lt;menu&gt;</div>
+                        <div class="option" onclick="selectAnswer(this, true)">&lt;nav&gt;</div>
+                        <div class="option" onclick="selectAnswer(this, false)">&lt;navigation&gt;</div>
+                        <div class="option" onclick="selectAnswer(this, false)">&lt;navbar&gt;</div>
+                    </div>
+                </div>
+
+                <div id="quizResult" style="text-align: center; margin-top: 2rem; font-size: 1.2rem; font-weight: bold;"></div>
+            </div>
+        </section>
+
+        <!-- Tab System -->
+        <section class="animate-on-scroll">
+            <h2>📊 Interactive Tabs</h2>
+            <div class="tabs">
+                <div class="tab active" onclick="openTab(event, 'tab1')">Features</div>
+                <div class="tab" onclick="openTab(event, 'tab2')">Technologies</div>
+                <div class="tab" onclick="openTab(event, 'tab3')">Benefits</div>
+            </div>
+
+            <div id="tab1" class="tab-content active">
+                <h3>🚀 Advanced Features</h3>
+                <ul>
+                    <li>Responsive Design with CSS Grid and Flexbox</li>
+                    <li>Interactive Calculator with Full Functionality</li>
+                    <li>Multimedia Gallery with Video and Audio</li>
+                    <li>Progressive Enhancement Techniques</li>
+                    <li>Accessibility Features (ARIA, Semantic HTML)</li>
+                    <li>Modern CSS Animations and Transitions</li>
+                </ul>
+            </div>
+
+            <div id="tab2" class="tab-content">
+                <h3>⚡ Technologies Used</h3>
+                <ul>
+                    <li>HTML5 Semantic Elements</li>
+                    <li>CSS3 Grid and Flexbox</li>
+                    <li>CSS Custom Properties (Variables)</li>
+                    <li>Modern JavaScript ES6+</li>
+                    <li>Web APIs (Intersection Observer, Local Storage)</li>
+                    <li>Progressive Web App Concepts</li>
+                </ul>
+            </div>
+
+            <div id="tab3" class="tab-content">
+                <h3>✨ Key Benefits</h3>
+                <ul>
+                    <li>Cross-browser Compatibility</li>
+                    <li>Mobile-first Responsive Design</li>
+                    <li>Fast Loading and Performance Optimized</li>
+                    <li>SEO Friendly Structure</li>
+                    <li>Accessibility Compliant</li>
+                    <li>Maintainable and Scalable Code</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Accordion Section -->
+        <section class="animate-on-scroll">
+            <h2>📋 FAQ Accordion</h2>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        What browsers support HTML5?
+                    </div>
+                    <div class="accordion-content">
+                        <p>All modern browsers including Chrome, Firefox, Safari, Edge, and Opera fully support HTML5 features. Even Internet Explorer 9+ has substantial HTML5 support.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        How do you ensure mobile responsiveness?
+                    </div>
+                    <div class="accordion-content">
+                        <p>We use CSS Grid, Flexbox, media queries, and mobile-first design principles. The viewport meta tag ensures proper scaling on mobile devices.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        What makes this website accessible?
+                    </div>
+                    <div class="accordion-content">
+                        <p>Semantic HTML, proper heading structure, alt attributes for images, keyboard navigation support, and ARIA labels for interactive elements.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Media Gallery -->
+        <section id="gallery" class="animate-on-scroll">
+            <h2>🎬 Media Gallery</h2>
+            <div class="gallery">
+                <div class="media-item">
+                    <video controls poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200'%3E%3Crect width='100%25' height='100%25' fill='%23667eea'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='0.3em' fill='white' font-family='Arial' font-size='16'%3EVideo Placeholder%3C/text%3E%3C/svg%3E">
+                        <source src="data:video/mp4;base64," type="video/mp4">
+                        <p>Your browser doesn't support video playback.</p>
+                    </video>
+                    <p><strong>Sample Video</strong> - HTML5 Video Element</p>
+                </div>
+
+                <div class="media-item">
+                    <audio controls>
+                        <source src="data:audio/mpeg;base64," type="audio/mpeg">
+                        <p>Your browser doesn't support audio playback.</p>
+                    </audio>
+                    <p><strong>Sample Audio</strong> - HTML5 Audio Element</p>
+                </div>
+
+                <div class="media-item">
+                    <canvas id="demoCanvas" width="300" height="200" style="border: 2px solid #ddd; border-radius: 15px;"></canvas>
+                    <p><strong>Interactive Canvas</strong> - Click to draw!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Visualization -->
+        <section id="data" class="animate-on-scroll">
+            <h2>📈 Data Analytics Dashboard</h2>
+            <div class="chart-container">
+                <div class="chart-item">
+                    <h4>Website Performance</h4>
+                    <div class="chart-bar">
+                        <div class="chart-fill" style="width: 85%;"></div>
+                    </div>
+                    <p><strong>85%</strong> Optimization Score</p>
+                </div>
+
+                <div class="chart-item">
+                    <h4>Mobile Compatibility</h4>
+                    <div class="chart-bar">
+                        <div class="chart-fill" style="width: 92%;"></div>
+                    </div>
+                    <p><strong>92%</strong> Mobile Friendly</p>
+                </div>
+
+                <div class="chart-item">
+                    <h4>Accessibility Score</h4>
+                    <div class="chart-bar">
+                        <div class="chart-fill" style="width: 96%;"></div>
+                    </div>
+                    <p><strong>96%</strong> WCAG Compliant</p>
+                </div>
+
+                <div class="chart-item">
+                    <h4>Browser Support</h4>
+                    <div class="chart-bar">
+                        <div class="chart-fill" style="width: 98%;"></div>
+                    </div>
+                    <p><strong>98%</strong> Cross-browser</p>
+                </div>
+            </div>
+
+            <!-- Live Clock -->
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: #f8f9fa; border-radius: 15px;">
+                <h3>🕐 Live Clock</h3>
+                <div id="liveClock" style="font-size: 2rem; font-weight: bold; color: #667eea; margin-top: 1rem;"></div>
+                <div id="liveDate" style="font-size: 1.2rem; color: #666; margin-top: 0.5rem;"></div>
+            </div>
+        </section>
+
+        <!-- Advanced Contact Form -->
+        <section id="contact" class="animate-on-scroll">
+            <h2>📧 Advanced Contact Form</h2>
+            <form class="form-grid" onsubmit="handleFormSubmit(event)">
+                <div>
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required minlength="2" maxlength="50">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                </div>
+
+                <div>
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a subject</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="technical">Technical Support</option>
+                            <option value="business">Business Partnership</option>
+                            <option value="feedback">Website Feedback</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="priority">Priority Level</label>
+                        <select id="priority" name="priority">
+                            <option value="low">Low</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="high">High</option>
+                            <option value="urgent">Urgent</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="6" required minlength="10" maxlength="500" placeholder="Please describe your inquiry in detail..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="newsletter" name="newsletter" style="width: auto; margin-right: 10px;">
+                            Subscribe to our newsletter
+                        </label>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Message 🚀</button>
+                </div>
+            </form>
+
+            <div id="formResult" style="margin-top: 2rem; padding: 1rem; border-radius: 10px; display: none;"></div>
+        </section>
+
+        <!-- Footer with Additional Features -->
+        <footer style="background: rgba(255, 255, 255, 0.1); color: white; text-align: center; padding: 3rem; border-radius: 20px; margin-top: 2rem;">
+            <h3>🌟 TechHub Interactive</h3>
+            <p>Showcasing the power of modern HTML5, CSS3, and JavaScript</p>
+            <p style="margin-top: 2rem; opacity: 0.8;">
+                Built with ❤️ using semantic HTML, responsive CSS, and progressive enhancement
+            </p>
+            <div style="margin-top: 2rem;">
+                <button onclick="scrollToTop()" style="background: rgba(255, 255, 255, 0.2); border: 2px solid white; color: white; padding: 10px 20px; border-radius: 25px; cursor: pointer;">
+                    ⬆️ Back to Top
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Calculator Functions
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function deleteLast() {
+            const display = document.getElementById('display');
+            display.value = display.value.slice(0, -1);
+        }
+
+        function calculate() {
+            const display = document.getElementById('display');
+            try {
+                const result = eval(display.value.replace('×', '*'));
+                display.value = result;
+            } catch (error) {
+                display.value = 'Error';
+                setTimeout(clearDisplay, 2000);
+            }
+        }
+
+        // Quiz Functions
+        let score = 0;
+        let questionsAnswered = 0;
+
+        function selectAnswer(element, isCorrect) {
+            const options = element.parentNode.querySelectorAll('.option');
+            options.forEach(opt => {
+                opt.style.pointerEvents = 'none';
+                opt.style.opacity = '0.6';
+            });
+
+            if (isCorrect) {
+                element.style.background = '#4CAF50';
+                element.style.color = 'white';
+                element.style.borderColor = '#4CAF50';
+                score++;
+            } else {
+                element.style.background = '#f44336';
+                element.style.color = 'white';
+                element.style.borderColor = '#f44336';
+                
+                // Highlight correct answer
+                options.forEach(opt => {
+                    if (opt.onclick.toString().includes('true')) {
+                        opt.style.background = '#4CAF50';
+                        opt.style.color = 'white';
+                        opt.style.borderColor = '#4CAF50';
+                    }
+                });
+            }
+
+            questionsAnswered++;
+            updateQuizResult();
+        }
+
+        function updateQuizResult() {
+            const resultDiv = document.getElementById('quizResult');
+            if (questionsAnswered === 2) {
+                const percentage = (score / 2) * 100;
+                resultDiv.innerHTML = `
+                    <div style="padding: 2rem; background: ${percentage >= 50 ? '#4CAF50' : '#f44336'}; color: white; border-radius: 15px;">
+                        Quiz Complete! Score: ${score}/2 (${percentage}%)
+                        <br><small>${percentage >= 50 ? 'Great job! 🎉' : 'Keep learning! 📚'}</small>
+                    </div>
+                `;
+            }
+        }
+
+        // Tab System
+        function openTab(evt, tabName) {
+            const tabcontent = document.getElementsByClassName('tab-content');
+            for (let i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove('active');
+            }
+
+            const tablinks = document.getElementsByClassName('tab');
+            for (let i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove('active');
+            }
+
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        // Accordion
+        function toggleAccordion(element) {
+            const item = element.parentNode;
+            const isActive = item.classList.contains('active');
+            
+            // Close all accordion items
+            document.querySelectorAll('.accordion-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Open clicked item if it wasn't active
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+
+        // Canvas Drawing
+        function initCanvas() {
+            const canvas = document.getElementById('demoCanvas');
+            const ctx = canvas.getContext('2d');
+            let isDrawing = false;
+
+            // Create gradient background
+            const gradient = ctx.createLinearGradient(0, 0, 300, 200);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 300, 200);
+
+            // Add text
+            ctx.fillStyle = 'white';
+            ctx.font = '16px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('Click and drag to draw!', 150, 100);
+
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseout', stopDrawing);
+
+            function startDrawing(e) {
+                isDrawing = true;
+                const rect = canvas.getBoundingClientRect();
+                ctx.beginPath();
+                ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+            }
+
+            function draw(e) {
+                if (!isDrawing) return;
+                const rect = canvas.getBoundingClientRect();
+                ctx.lineWidth = 3;
+                ctx.lineCap = 'round';
+                ctx.strokeStyle = '#fff';
+                ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+            }
+
+            function stopDrawing() {
+                isDrawing = false;
+                ctx.beginPath();
+            }
+        }
+
+        // Form Handling
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const resultDiv = document.getElementById('formResult');
+            
+            // Simulate form processing
+            resultDiv.style.display = 'block';
+            resultDiv.style.background = '#4CAF50';
+            resultDiv.style.color = 'white';
+            resultDiv.innerHTML = '✅ Message sent successfully! We\'ll get back to you soon.';
+            
+            // Reset form
+            event.target.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                resultDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        // Live Clock
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            const dateString = now.toLocaleDateString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            document.getElementById('liveClock').textContent = timeString;
+            document.getElementById('liveDate').textContent = dateString;
+        }
+
+        // Progress Bar
+        function updateProgress() {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.offsetHeight;
+            const winHeight = window.innerHeight;
+            const scrollPercent = scrollTop / (docHeight - winHeight);
+            const scrollPercentRounded = Math.round(scrollPercent * 100);
+            
+            const progressBar = document.getElementById('pageProgress');
+            progressBar.style.width = scrollPercentRounded + '%';
+            progressBar.textContent = scrollPercentRounded + '%';
+        }
+
+        // Scroll animations
+        function checkScroll() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Theme Toggle
+        function toggleTheme() {
+            const body = document.body;
+            const currentBg = body.style.background;
+            
+            if (currentBg.includes('135deg')) {
+                body.style.background = 'linear-gradient(135deg, #2c3e50 0%, #34495e 100%)';
+                document.querySelector('.theme-toggle').textContent = '☀️';
+            } else {
+                body.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                document.querySelector('.theme-toggle').textContent = '🌙';
+            }
+        }
+
+        // Smooth scrolling for navigation
+        function smoothScroll() {
+            document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                });
+            });
+        }
+
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Keyboard navigation for calculator
+        document.addEventListener('keydown', function(event) {
+            const display = document.getElementById('display');
+            if (display === document.activeElement || event.target.closest('.calculator')) {
+                const key = event.key;
+                
+                if ('0123456789+-*/().'.includes(key)) {
+                    appendToDisplay(key === '*' ? '×' : key);
+                    event.preventDefault();
+                } else if (key === 'Enter' || key === '=') {
+                    calculate();
+                    event.preventDefault();
+                } else if (key === 'Escape' || key.toLowerCase() === 'c') {
+                    clearDisplay();
+                    event.preventDefault();
+                } else if (key === 'Backspace') {
+                    deleteLast();
+                    event.preventDefault();
+                }
+            }
+        });
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize canvas
+            initCanvas();
+            
+            // Start clock
+            updateClock();
+            setInterval(updateClock, 1000);
+            
+            // Initialize scroll animations
+            checkScroll();
+            updateProgress();
+            
+            // Initialize smooth scrolling
+            smoothScroll();
+            
+            // Animate chart bars
+            setTimeout(() => {
+                document.querySelectorAll('.chart-fill').forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0%';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 500);
+                });
+            }, 1000);
+            
+            // Add loading animation to page
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s ease';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Event listeners
+        window.addEventListener('scroll', () => {
+            checkScroll();
+            updateProgress();
+        });
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            checkScroll();
+        });
+
+        // Form validation enhancements
+        document.addEventListener('input', function(event) {
+            if (event.target.matches('input, textarea, select')) {
+                const field = event.target;
+                field.classList.remove('error');
+                
+                // Real-time validation feedback
+                if (field.type === 'email' && field.value) {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(field.value)) {
+                        field.style.borderColor = '#f44336';
+                    } else {
+                        field.style.borderColor = '#4CAF50';
+                    }
+                }
+                
+                if (field.type === 'tel' && field.value) {
+                    const phoneRegex = /^\d{10}$/;
+                    if (!phoneRegex.test(field.value.replace(/\D/g, ''))) {
+                        field.style.borderColor = '#f44336';
+                    } else {
+                        field.style.borderColor = '#4CAF50';
+                    }
+                }
+            }
+        });
+
+        // Add easter egg
+        let konamiCode = [];
+        const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+
+        document.addEventListener('keydown', function(event) {
+            konamiCode.push(event.code);
+            if (konamiCode.length > konamiSequence.length) {
+                konamiCode.shift();
+            }
+            
+            if (konamiCode.join(',') === konamiSequence.join(',')) {
+                // Easter egg activated!
+                document.body.style.transform = 'rotate(360deg)';
+                document.body.style.transition = 'transform 2s ease';
+                setTimeout(() => {
+                    document.body.style.transform = '';
+                    alert('🎉 Konami Code activated! You found the easter egg!');
+                }, 2000);
+                konamiCode = [];
+            }
+        });
+
+        // Performance monitoring
+        window.addEventListener('load', function() {
+            const loadTime = performance.now();
+            console.log(`🚀 Page loaded in ${Math.round(loadTime)}ms`);
+            
+            // Add performance indicator
+            if (loadTime < 1000) {
+                document.querySelector('.chart-item h4').innerHTML += ' ⚡';
+            }
+        });
+
+        // Accessibility enhancements
+        document.addEventListener('keydown', function(event) {
+            // Skip navigation on Tab key
+            if (event.key === 'Tab' && event.shiftKey) {
+                const focusableElements = document.querySelectorAll(
+                    'a[href], button, textarea, input[type="text"], input[type="radio"], input[type="checkbox"], select'
+                );
+                const firstElement = focusableElements[0];
+                const lastElement = focusableElements[focusableElements.length - 1];
+                
+                if (document.activeElement === firstElement) {
+                    lastElement.focus();
+                    event.preventDefault();
+                }
+            }
+        });
+
+        // Print functionality
+        function printPage() {
+            window.print();
+        }
+
+        // Add print button to navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const nav = document.querySelector('nav ul');
+            const printLi = document.createElement('li');
+            printLi.innerHTML = '<a href="#" onclick="printPage(); return false;">Print</a>';
+            nav.appendChild(printLi);
+        });
+    </script>
+</body>
+</html>
